@@ -5,3 +5,12 @@
 .justify{
   text-align: justify;
 }
+
+.login{
+  background-color: #00ff88;
+  border-radius: 8px;
+  width: 120px;
+}
+.roxo{
+  color: #2b134b;
+}
