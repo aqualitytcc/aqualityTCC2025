@@ -16,11 +16,12 @@ body * {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 79%);
+    background: #020024;
+    background: linear-gradient(350deg,rgba(2, 0, 36, 1) 0%, rgba(9, 44, 121, 1) 37%, rgba(0, 212, 255, 1) 100%);
 }
 
 #login-title{
-    text-shadow: 2px 2px 14px #00ff88;
+    text-shadow: 2px 2px 8px #2b865c;
 }
 
 .left-login{
@@ -34,7 +35,7 @@ body * {
 
 .left-login > h1 {
     font-size: 3vw;
-    color: #00ff88;
+    color: #6ad165;
     text-shadow:1px 1px 6px #332d46;
 }
 
