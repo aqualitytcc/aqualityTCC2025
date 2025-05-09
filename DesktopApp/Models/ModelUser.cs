@@ -7,7 +7,5 @@ public class Usuario
 
     public bool ValidarLogin(string email, string senha)
     {
-        // Simulação de login, depois você conecta com base de dados
-        return Email == email && Senha == senha;
+        return email == Email && senha == Senha;
     }
-}

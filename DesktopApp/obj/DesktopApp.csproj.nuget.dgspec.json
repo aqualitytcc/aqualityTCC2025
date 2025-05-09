@@ -1,37 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {}
+    "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {
+    "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
+        "projectUniqueName": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
         "projectName": "DesktopApp",
-        "projectPath": "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
+        "projectPath": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
         "packagesPath": "C:\\Users\\alunoinfo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\obj\\",
+        "outputPath": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\alunoinfo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -44,12 +43,11 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Avalonia": {
               "target": "Package",
@@ -92,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

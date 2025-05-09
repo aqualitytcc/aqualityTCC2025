@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sagRwn1VzDw=",
+  "dgSpecHash": "H10lrfLK3jQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\alunoinfo\\Downloads\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
+  "projectFilePath": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alunoinfo\\.nuget\\packages\\avalonia\\11.2.7\\avalonia.11.2.7.nupkg.sha512",
     "C:\\Users\\alunoinfo\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.22045.20230930\\avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",
