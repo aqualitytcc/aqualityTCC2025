@@ -1,11 +1,14 @@
-namespace DesktopApp.Models;
-public class Usuario
+namespace DesktopApp.Models
 {
-    public string Nome { get; set; }
-    public string Email { get; set; }
-    public string Senha { get; set; }
-
-    public bool ValidarLogin(string email, string senha)
+    public class Usuario
     {
-        return email == Email && senha == Senha;
+        public string Nome { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Senha { get; set; } = string.Empty;
+
+        public bool ValidarLogin(string email, string senha)
+        {
+            return email == Email && senha == Senha;
+        }
     }
+}

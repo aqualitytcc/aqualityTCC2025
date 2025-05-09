@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {}
+    "D:\\3EDS\\TCC\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {
+    "D:\\3EDS\\TCC\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
+        "projectUniqueName": "D:\\3EDS\\TCC\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
         "projectName": "DesktopApp",
-        "projectPath": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
+        "projectPath": "D:\\3EDS\\TCC\\aqualityTCC2025\\DesktopApp\\DesktopApp.csproj",
         "packagesPath": "C:\\Users\\alunoinfo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alunoinfo\\aqualityTCC2025\\DesktopApp\\obj\\",
+        "outputPath": "D:\\3EDS\\TCC\\aqualityTCC2025\\DesktopApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -72,6 +72,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "ReactiveUI": {
+              "target": "Package",
+              "version": "[20.2.45, )"
             }
           },
           "imports": [

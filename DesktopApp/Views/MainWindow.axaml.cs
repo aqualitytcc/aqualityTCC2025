@@ -1,11 +1,14 @@
 using Avalonia.Controls;
+using DesktopApp.ViewModels;
 
-namespace DesktopApp.Views;
-
-public partial class MainWindow : Window
+namespace DesktopApp
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = new LoginViewModel(); // Definindo o contexto aqui
+        }
     }
 }

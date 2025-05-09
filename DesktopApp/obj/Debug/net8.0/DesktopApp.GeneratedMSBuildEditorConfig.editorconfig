@@ -15,12 +15,15 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DesktopApp
-build_property.ProjectDir = C:\Users\alunoinfo\aqualityTCC2025\DesktopApp\
+build_property.ProjectDir = D:\3EDS\TCC\aqualityTCC2025\DesktopApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[C:/Users/alunoinfo/aqualityTCC2025/DesktopApp/App.axaml]
+[D:/3EDS/TCC/aqualityTCC2025/DesktopApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/alunoinfo/aqualityTCC2025/DesktopApp/Views/MainWindow.axaml]
+[D:/3EDS/TCC/aqualityTCC2025/DesktopApp/Views/LoginView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/3EDS/TCC/aqualityTCC2025/DesktopApp/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
