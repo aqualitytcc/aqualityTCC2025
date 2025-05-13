@@ -1479,24 +1479,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henzo\\.nuget\\packages\\": {}
+    "C:\\Users\\alunoinfo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henzo\\Desktop\\aqualityTCC2025\\AqualityApp\\AqualityApp.csproj",
+      "projectUniqueName": "D:\\3E\\aqualitytcc\\AqualityApp\\AqualityApp.csproj",
       "projectName": "AqualityApp",
-      "projectPath": "C:\\Users\\henzo\\Desktop\\aqualityTCC2025\\AqualityApp\\AqualityApp.csproj",
-      "packagesPath": "C:\\Users\\henzo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henzo\\Desktop\\aqualityTCC2025\\AqualityApp\\obj\\",
+      "projectPath": "D:\\3E\\aqualitytcc\\AqualityApp\\AqualityApp.csproj",
+      "packagesPath": "C:\\Users\\alunoinfo\\.nuget\\packages\\",
+      "outputPath": "D:\\3E\\aqualitytcc\\AqualityApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\henzo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alunoinfo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1562,7 +1564,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\alunoinfo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
