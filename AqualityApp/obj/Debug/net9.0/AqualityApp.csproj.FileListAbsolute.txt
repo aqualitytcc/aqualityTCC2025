@@ -134,6 +134,3 @@ D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\refint\Avalonia\AqualityApp.dll
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\Aquality.2E3CCB01.Up2Date
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\AqualityApp.genruntimeconfig.cache
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\ref\AqualityApp.dll
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\AqualityApp.dll
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\refint\AqualityApp.dll
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net9.0\AqualityApp.pdb
