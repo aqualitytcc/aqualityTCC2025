@@ -1,54 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Utilizaremos de CSS, HTML e JS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
-    <!-- Isso será incorporado no projeto mais tarde -->
-     <link 
-     rel="stylesheet"
-     href="../css/style.css"
-     >
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="main-login">
- 
-        <div class="left-login">
-            <h1>Faça login<br>E entre para nosso time!</h1>
-            <img src="../imagens/green-world.svg" alt="Planet Animation" class="left-login-image">
-        </div>
-
-        <div class="right-login">
-
-            <div class="card-login">
-
-                <h1 id="login-title">LOGIN</h1>
-                <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário">
-                    <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/user--v1.png" alt="user--v1"/>
+<body style="background-image: url(../imagens/CapaAqualityLogin.png); background-size: cover;">
+    
+    <form>
+            <div style="width: 450px; border-style: solid; border-color: white; border-radius: 20px; padding: 50px 40px 80px; margin-top: 10%;;" class="container bg-white ">
+                <h1 class="text-center" style="margin-bottom: 70px;">Login</h1>
                 
+                <div class="mb-3">
+                    <label class="form-label">Email</label><br>
+                    <input type="text" class="form-control" name="user" placeholder="Email">
                 </div>
-
-                <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha">
-                    <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/lock--v1.png" alt="lock--v1"/>
+                <div class="mb-3">
+                    <label class="form-label">Senha</label><br>
+                    <input type="password" class="form-control" name="senha" placeholder="Senha"><br>
+                    <input type="button" style="width: 100%; height: 50px;" class="btn btn-primary" value="Entrar">
+                    
                 </div>
-
-                <button type="submit" class="btn-login">Login</button>
-                
-
-                <a href="#" class="ancora">Esqueci minha senha</a>
-                <div class="register-link">
-                    <p>Não está cadastrado? <a href="cadastro.html" class="ancora">Cadastrar</a> </p>
-                </div>
-
+                <label class="registre">Não tem uma conta?</label> <a class="registre" href="../html/cadastro.html">Registre-se</a>
             </div>
-        </div>
-
-    </div>
-
+    </form>
 </body>
 </html>
