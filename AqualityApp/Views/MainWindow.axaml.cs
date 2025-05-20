@@ -13,6 +13,6 @@ public partial class MainWindow : Window
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
     {   
-        Debug.WriteLine($"Usuario: {this);
+        Debug.WriteLine($"Usuario: {this}");
     }
 }

@@ -21,6 +21,7 @@
         <TextBox></TextBox>
         <TextBlock Margin="4" FontSize="20">Senha</TextBlock>
         <Button Click="Button_OnClick">Entrar</Button>
+        <TextBlock Name="resposta"></TextBlock>
         
     </StackPanel>
 
