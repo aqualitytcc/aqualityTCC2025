@@ -15,7 +15,6 @@ D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.OpenGL.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Vulkan.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Controls.ColorPicker.dll
-D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Controls.DataGrid.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Desktop.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Diagnostics.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Fonts.Inter.dll
@@ -25,9 +24,9 @@ D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Remote.Protocol.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Skia.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Themes.Fluent.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Themes.Simple.dll
+D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Win32.Automation.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.Win32.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\Avalonia.X11.dll
-D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\CommunityToolkit.Mvvm.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\HarfBuzzSharp.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\MicroCom.Runtime.dll
 D:\3E\aqualitytcc\AqualityApp\bin\Debug\net8.0\SkiaSharp.dll
@@ -61,9 +60,9 @@ D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.AssemblyInfoInputs.ca
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.AssemblyInfo.cs
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.csproj.CoreCompileInputs.cache
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.sourcelink.json
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\Avalonia\AqualityApp.dll
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\Avalonia\AqualityApp.pdb
-D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\refint\Avalonia\AqualityApp.dll
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\Aquality.2E3CCB01.Up2Date
+D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.dll
+D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\refint\AqualityApp.dll
+D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.pdb
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\AqualityApp.genruntimeconfig.cache
 D:\3E\aqualitytcc\AqualityApp\obj\Debug\net8.0\ref\AqualityApp.dll
