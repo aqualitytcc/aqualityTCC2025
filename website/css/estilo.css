@@ -14,3 +14,12 @@
 .roxo{
   color: #2b134b;
 }
+
+.registre{
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.logindiv{
+  width: 450px; border-style: solid; border-color: white; border-radius: 20px; padding: 50px 40px 80px; margin-top: 10%;
+}
