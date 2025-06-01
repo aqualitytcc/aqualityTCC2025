@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AqualityApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edbbd2a8aca97a5279461b7505e2dfa38cb3077d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68501eb8294c4ad895300b0eb40a064858c98690")]
 [assembly: System.Reflection.AssemblyProductAttribute("AqualityApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AqualityApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,7 +14,41 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    <Grid ShowGridLines="True">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                <GradientStop Color="#146fb5" Offset="0.5"/>
+                <GradientStop Color="#001c80" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="200"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="AliceBlue" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Grid ShowGridLines="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Usuário" Foreground="Black" Margin="0,0,0,10"/>
+            <TextBox Grid.Row="1" MinWidth="150" MaxWidth="300" HorizontalAlignment="Center" Name="User" Margin="0,0,0,20" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Senha" Foreground="Black" Margin="0,0,0,10"/>
+            <TextBox Grid.Row="3" MinWidth="150" MaxWidth="300" HorizontalAlignment="Center" Name="Password" Margin="0,0,0,30" VerticalAlignment="Center"/>
+            <Button Grid.Row="4" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Background="#1E90FF" Foreground="White" BorderBrush="White" BorderThickness="1" FontSize="16" Margin="0,20,0,0"/>
+        </Grid>
+
+        <Image Grid.Column="1" Source="../Assets/aquality-logo.png" 
+               Margin="0,0,10,44" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+               Width="72" Height="88"/>
+        <TextBlock Grid.Column="1" FontSize="23" Margin="0,0,5,20" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                   Text="Aquality" FontWeight="Bold" Foreground="AliceBlue"/>
+    </Grid>
 
 </Window>
