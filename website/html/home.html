@@ -7,34 +7,70 @@
     <link rel="stylesheet" href="../css/estilo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="../javascript/login.js"></script>
 </head>
 <body>
   <div id="logindiv" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body" style="padding: 50px 20px 90px;">
-    <h1 class="text-center" style="margin-bottom: 70px;">Login</h1>
-    
-    <div class="mb-3">
-        <label class="form-label">Email</label><br>
-        <input type="text" class="form-control" name="user" placeholder="Email">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Senha</label><br>
-        <input type="password" class="form-control" name="senha" placeholder="Senha"><br>
-        <input type="button" style="width: 100%; height: 50px;" class="btn btn-primary" value="Entrar">
+        <div class="modal-body" style="padding: 70px 30px;">
         
+          <h1 class="text-center" style="margin-bottom: 70px;">Login</h1>
+
+          <div class="mb-3">
+            <label class="form-label ">Email</label><br>
+            <input type="email" class="form-control" id="lemail" placeholder="email@exemplo.com">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Senha</label><br>
+            <input type="password" class="form-control" id="lsenha" placeholder="Senha"><br>
+            <input type="button" style="width: 100%; height: 50px;" onclick="login()" class="btn btn-primary" value="Entrar">        
+          </div>
+
+          <label class="registre">Não tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv"">Registre-se aqui</a>
+        
+          </div>
+      </div>
     </div>
-    <label class="registre">Não tem uma conta?</label> <a class="registre" href="../html/cadastro.html">Registre-se</a>
   </div>
+  <div id="cadasdiv" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="padding: 70px 30px;">
+
+          <h2 class="text-center" style="margin-bottom: 70px;">Cadastro</h2>
+          <div class="mb-3">
+              <label class="form-label ">Nome</label><br>
+              <input type="text" class="form-control" id="nome" placeholder="Nome">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label ">Sobrenome</label><br>
+              <input type="text" class="form-control" id="snome" placeholder="Sobrenome">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label ">Email</label><br>
+              <input type="text" class="form-control" id="email" placeholder="Usuário">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label">Senha</label><br>
+              <input type="password" class="form-control" id="senha" placeholder="Senha"><br>
+              <input type="button" style="width: 100%; height: 50px;" onclick="enviar()" class="btn btn-primary" value="Cadastrar">
+          </div>
+
+          <label class="registre">Já tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#logindiv"">Entre aqui</a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
   <div class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand text-white" href="#"><img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;"><span style="font-weight: 650;">Aquality</span></a>
-          <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -49,10 +85,15 @@
                 <a class="nav-link text-white" href="#Inovacoes">Inovações</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#contato">Contato</a>
+                <a class="nav-link  text-white" href="#contato">Contato</a>
               </li>
               <li class="nav-item">
-                <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
+                <!-- <button onclick="MostrarLogin()"  class="btn bg-white">Fazer Login</button> -->
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
+              </li>
+              <li style="margin-left: 10px;"class="nav-item">
+                <!-- <button onclick="MostrarLogin()"  class="btn bg-white">Fazer Login</button> -->
+                <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv">Cadastro</button>
               </li>
             </ul>
         </div>
@@ -111,23 +152,70 @@
     </div>
 
     </section>
-    <section id="Inovacoes" class="py-5">
+    <section id="Inovacoes" class="py-5 px-4">
       <div class="container">
         <div class="text-center mb-5">
-        <h2>Inovações</h2>
-        <p>Conheça nosso sistema de Arduino.</p>
+          <h2>Inovações</h2>
+          <p>Conheça nosso sistema de Arduino.</p>
+        </div>
+        <div class="container-fluid px-4">
+          <div class="row g-4">
+            <div class="col g-4">
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/placa-arduino-uno-100.png">
+                  <h4 class="card-title">ESP32 como Plataforma Principal</h4>
+                  <ul class="justify">
+                    <li>Monitoramento em tempo real</li>
+                    <li>Baixo consumo de energia</li>
+                    <li>Integração simplificada</li>
+                  </ul>
+                </div>
+              </div>
+              <br>
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/sensor-100.png">
+                  <h4 class="card-title">Sensores Utilizados</h4>
+                  <ul class="justify">
+                    <li><b>Ph</b>: Mede a acidez ou alcalinidade da água</li>
+                    <li><b>Turbidez</b>: Identifica partículas que tornam a água turva</li>
+                    <li><b>Condutividade</b>: Detecta a presença de impurezas na água</li>
+                    <li><b>Temperatura</b>: Mede variações térmicas da água</li>
+                  </ul>
+                </div>
+              </div>
+            </div>  
+            <div class="col">
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/gráfico-100.png">
+                  <h4 class="card-title">Dashboard em Tempo Real</h4>
+                  <ul class="justify">
+                    <li>Visualização remota do dados captados pelos sensores</li>
+                    <li>Alertas automáticos sobre alterações na água</li>
+                    <li>Histórico de medições anteriores</li>
+                  </ul>
+                </div>
+              </div>
+              <br>
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/torre-de-água-100.png">
+                  <h4 class="card-title">Cenários de Aplicação</h4>
+                  <ul class="justify">
+                    <li><b>Reservatórios urbanos</b>: Controle de tratamento da água</li>
+                    <li><b>Agricultura</b>: Qualidade da água para irrigação</li>
+                    <li><b>Aquicultura</b>: Monitoramento de tanques de peixes</li>
+                    <li><b>Projetos ambientais</b>: Análise de rios e lagos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <P>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra rutrum nisl. Nam tempor, nulla vel ultrices sollicitudin, mi metus ullamcorper mauris, a sodales nibh tortor eget lectus. Morbi maximus, enim a convallis sagittis, tellus dui pulvinar velit, a cursus diam velit quis odio. Aenean mi eros, vehicula at nisi at, tincidunt semper est. Duis dictum nisl velit, quis eleifend dolor mollis at. Sed sed semper felis. Maecenas accumsan laoreet sodales. Nunc ut massa sapien. Nulla cursus diam purus. Vivamus luctus aliquet diam sed pellentesque. Fusce facilisis aliquet velit. Maecenas mi sapien, tincidunt at finibus fermentum, auctor sodales massa.
-          Quisque in leo at diam eleifend egestas. Fusce sit amet nisi sit amet nunc euismod vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas quis magna quis tortor blandit ultrices. Nam vehicula dapibus metus eget accumsan. Mauris ligula purus, maximus a feugiat non, ultrices a augue. Nulla vel elit nec ipsum sollicitudin rhoncus ut nec odio. Morbi rutrum neque non mi accumsan, non blandit sem rutrum. Ut lacinia facilisis nibh, a mattis eros bibendum at. Nunc fermentum ut nibh a sollicitudin. Mauris at ornare ante.
-          Vestibulum ut consequat ligula. Proin bibendum lacus id elit molestie elementum. Sed pretium enim in lorem vestibulum consequat. In at libero neque. Nulla mollis semper lorem aliquet cursus. Etiam turpis justo, bibendum vitae felis sit amet, fermentum ornare mi. Vivamus quis enim interdum risus fringilla auctor. Morbi lectus lorem, convallis non sollicitudin et, rutrum id metus. Praesent ornare ligula volutpat nulla lobortis tempus.
-          Vivamus suscipit feugiat pharetra. In congue nisi et est cursus, eget efficitur eros euismod. Curabitur elit mauris, volutpat vel ante convallis, blandit sagittis mi. Morbi tempus vestibulum felis, eu porttitor nulla malesuada sit amet. Pellentesque sit amet arcu et nisi efficitur pretium. Proin hendrerit pellentesque sollicitudin. Morbi vestibulum quis ante vel faucibus. Aliquam nec blandit sem, ac gravida urna. Aenean tincidunt imperdiet ornare. Integer a interdum risus. Etiam feugiat leo a ex bibendum lacinia.
-          Nam pellentesque tortor vitae sapien efficitur, eu tempus nulla feugiat. Mauris in laoreet purus. Mauris id lobortis sapien. Sed vestibulum sodales tincidunt. Ut nec cursus magna, vel porttitor nisi. Praesent venenatis mi et leo lobortis, ac vulputate metus faucibus. Aliquam gravida finibus neque nec congue. Nullam suscipit a sem ornare mollis. Aliquam erat volutpat. Donec sed ex non magna maximus aliquam semper in lectus. Integer et lorem gravida, efficitur erat ultrices, tempus nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris sapien turpis, bibendum a velit ut, cursus cursus mi. Vestibulum vitae elit sit amet mi dictum feugiat. Maecenas rhoncus ipsum eu auctor ultricies.
-        </P>
-
-      </div>
-      </div>
+      
     </section>
     <section id="contato">
       <div class="container">
