@@ -2,8 +2,8 @@ POST http://localhost:3000/dados
 Content-Type: application/json
 
 {
-  "temperatura": 2542,
-  "umidade": 2323,
-  "turbidez": 2424,
-  "ph": 7
+  "temperatura": 234342,
+  "umidade": 2323433,
+  "turbidez": 242434,
+  "ph": 734
 }
