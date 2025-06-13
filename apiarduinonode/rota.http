@@ -4,6 +4,6 @@ Content-Type: application/json
 {
   "temperatura": 234342,
   "umidade": 2323433,
-  "turbidez": 242434,
+  "turbidez": 21414,
   "ph": 734
 }
