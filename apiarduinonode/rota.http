@@ -2,6 +2,7 @@ post http://localhost:3000/api/dispositivos
 content-type: application/json
 
 {
+<<<<<<< HEAD
   "id" : 2,
   "nome": "arduino",
   "modelo": "uno",
@@ -24,4 +25,10 @@ content-type: application/json
   "modelo": "uno",
   "descricao": "Placa Arduino Uno",
   "status": "ativo"
+=======
+  "temperatura": 234342,
+  "umidade": 2323433,
+  "turbidez": 21414,
+  "ph": 734
+>>>>>>> 7c7fc48be3da4d00e530aac4ba9154603cde6244
 }
