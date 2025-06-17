@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquality</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</head>
+<body>
+  <form action="post" id="logindiv" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="padding: 70px 30px;">
+        
+          <h1 class="text-center" style="margin-bottom: 70px;">Login</h1>
+
+          <div class="mb-3">
+            <label class="form-label ">Email</label><br>
+            <input type="email" class="form-control" id="lemail" placeholder="email@exemplo.com">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Senha</label><br>
+            <input type="password" class="form-control" id="lsenha" placeholder="Senha"><br>
+            <input type="button" style="width: 100%; height: 50px;" onclick="login()" class="btn btn-primary" value="Entrar">        
+          </div>
+
+          <label class="registre">Não tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv">Registre-se aqui</a>
+        
+          </div>
+      </div>
+    </div>
+  </form>
+  <form id="cadasdiv" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="padding: 70px 30px;">
+          
+          <h2 class="text-center" style="margin-bottom: 70px;">Cadastro</h2>
+          <div class="mb-3">
+              <label class="form-label ">Nome</label><br>
+              <input type="text" class="form-control" id="nome" placeholder="Nome">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label ">Sobrenome</label><br>
+              <input type="text" class="form-control" id="snome" placeholder="Sobrenome">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label ">Email</label><br>
+              <input type="text" class="form-control" id="email" placeholder="Usuário">
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label">Senha</label><br>
+              <input type="password" class="form-control" id="senha" placeholder="Senha"><br>
+              <input type="button" style="width: 100%; height: 50px;" onclick="enviar()" class="btn btn-primary" value="Cadastrar">
+          </div>
+
+          <label class="registre">Já tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#logindiv">Entre aqui</a>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="#"><img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;"><span style="font-weight: 650;">Aquality</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul  class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Início</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#NossoProjeto">Nosso Projeto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#Inovacoes">Inovações</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-white" href="#contato">Contato</a>
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
+              </li>
+              <li style="margin-left: 10px;"class="nav-item">
+                <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv">Cadastro</button>
+              </li>
+            </ul>
+        </div>
+    </nav>
+  </div>
+  <main>
+    <section id="NossoProjeto" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+        <h2 class="fw-bold">Nosso Projeto</h2>
+        <p class="lead">Conheça nosso sistema de Arduino.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 justify">
+            <p>
+              Devido a importância da água para a vida humana, o monitoramento de qualidade da água tem se tornado cada vez mais necessário.
+              Indústrias, hotéis, hospitais, fazendas, condomínios, estações de saneamento básico, entre outros locais que não só utilizam, 
+              mas dependem da água para sua subsistência encontram em um sistema de monitoramento de água a segurança que precisam para desempenharem suas atividades.
+            </p>
+          </div>
+          <div class="col-md-6 justify">
+            <p>
+              Nosso sistema para monitoramento de qualidade da água utiliza equipamentos conectados ao Arduino o que permite obter informações e as transmite em tempo real.
+              Para isso, é necessária a utilização de sensores que captam as informações como pH, condutividade, turbidez, entre outros.
+              Todas essas informações podem ser acessadas através do Aplicativo para Desktop ou App Mobile da Aquality. 
+            </p>
+          </div>
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+          
+      </div>
+    </div>
+    </div>
+
+    </section>
+    <section id="Inovacoes" class="py-5 px-4">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2>Inovações</h2>
+          <p>Conheça nosso sistema de Arduino.</p>
+        </div>
+        <div class="container-fluid px-4">
+          <div class="row g-4">
+            <div class="col g-4">
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/placa-arduino-uno-100.png">
+                  <h4 class="card-title">ESP32 como Plataforma Principal</h4>
+                  <ul class="justify">
+                    <li>Monitoramento em tempo real</li>
+                    <li>Baixo consumo de energia</li>
+                    <li>Integração simplificada</li>
+                  </ul>
+                </div>
+              </div>
+              <br>
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/sensor-100.png">
+                  <h4 class="card-title">Sensores Utilizados</h4>
+                  <ul class="justify">
+                    <li><b>Ph</b>: Mede a acidez ou alcalinidade da água</li>
+                    <li><b>Turbidez</b>: Identifica partículas que tornam a água turva</li>
+                    <li><b>Condutividade</b>: Detecta a presença de impurezas na água</li>
+                    <li><b>Temperatura</b>: Mede variações térmicas da água</li>
+                  </ul>
+                </div>
+              </div>
+            </div>  
+            <div class="col">
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/gráfico-100.png">
+                  <h4 class="card-title">Dashboard em Tempo Real</h4>
+                  <ul class="justify">
+                    <li>Visualização remota do dados captados pelos sensores</li>
+                    <li>Alertas automáticos sobre alterações na água</li>
+                    <li>Histórico de medições anteriores</li>
+                  </ul>
+                </div>
+              </div>
+              <br>
+              <div class="card text-center">
+                <div class="card-body">
+                  <img src="../imagens/torre-de-água-100.png">
+                  <h4 class="card-title">Cenários de Aplicação</h4>
+                  <ul class="justify">
+                    <li><b>Reservatórios urbanos</b>: Controle de tratamento da água</li>
+                    <li><b>Agricultura</b>: Qualidade da água para irrigação</li>
+                    <li><b>Aquicultura</b>: Monitoramento de tanques de peixes</li>
+                    <li><b>Projetos ambientais</b>: Análise de rios e lagos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section id="contato">
+      <div class="container">
+        <div class="text-center mb-5">
+        <h2>Entre em Contato</h2>
+        <p>Conheça nosso sistema de Arduino.</p>
+      </div>
+      <div>
+
+
+      </div>
+    </div>
+    </section>
+  </main>
+</body>
+</html>

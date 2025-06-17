@@ -3,14 +3,21 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mysql2 from 'mysql2';
 
+// Conectando ao banco de dados MySQL
+// Certifique-se de que o MySQL está rodando e as credenciais estão corretas
 const conn= mysql2.createConnection({
     host:'localhost',
     user:'root',
     password:'master',
     database:'aquality'});
+
+
+//Criando as listas para armazenar os dados
 let dispositivos=[];
 let usuarios=[];
 let leituras=[];
+// Exportando as funções para serem usadas nas rotas
+// Obter todos os dispositivos
 export const obterDispositivos = (req, res) => {
     conn.query('SELECT * FROM dispositivos', (error, dados) => {
         if(error){
@@ -27,44 +34,49 @@ export const obterDispositivos = (req, res) => {
     res.json(dispositivos);
     });
 }
+// Adicionar um novo dispositivo
 export const adicionarDispositivo = (req, res) => {
-    const { id, usuario_id, nome, descricao, criado_em } = req.body;
-    conn.query(`INSERT INTO dispositivos VALUES (${id}, ${usuario_id}, ${nome}, ${descricao}, ${criado_em})`, (error, results) => {
+    const { usuario_id, nome, descricao } = req.body;
+    if (!usuario_id || !nome || !descricao ) {
+        res.status(400).json({ message: 'Todos os campos são obrigatórios' });
+        return;
+    }
+    const sqlQuery = 'INSERT INTO dispositivos (usuario_id, nome, descricao) VALUES (?, ?, ?)';
+    conn.query(sqlQuery, [parseInt(usuario_id), nome, descricao], (error, results) => {
         if (error) {
             res.status(500).json({ message: 'Erro ao adicionar dispositivo', error: error.message });
             return;
         }
-        res.status(201).json({
-            id: id.length + 1,
-            usuario_id,
-            nome,
-            descricao,
-            criado_em
-        });
+        res.status(201).json({ message: 'Dispositivo adicionado com sucesso'});
     });
-};
-/*
-export const atualizarDispositivo = (req, res) => {
-    const id= parseInt(req.params.id);
-    const dispositivo = req.body;
-    const index = dispositivos.findIndex(d => d.id === id);
-    if(index === -1){
-        res.status(404).json({message: 'Dispositivo não encontrado'});
-    }
-    else{
-        dispositivos[index] = dispositivo;
-        res.json(dispositivo);
-    }
 }
-export const removerDispositivo=(req, res)=>{
-    const id= parseInt(req.params.id);
-    const dispositivo = req.body;
-    const index = dispositivos.findIndex(d => d.id === id);
-    if(index === -1){
-        res.status(404).json({message: 'Dispositivo não encontrado'});
+// Atualizar um dispositivo existente
+export const atualizarDispositivo = (req, res) => {
+    const {id}=req.params;
+    const { usuario_id, nome, descricao } = req.body;
+    if (!usuario_id || !nome || !descricao){
+        res.status(400).json({message:'Preencha todos os campos'});
+        return;
     }
-    else{
-        dispositivos.splice(index, 1);
-        res.json({message: 'Dispositivo removido com sucesso'});
-    }
-}*/
+    const sqlQuery = 'UPDATE dispositivos SET usuario_id=?, nome=?, descricao=? WHERE id=?';
+    conn.query(sqlQuery, [parseInt(usuario_id), nome, descricao, parseInt(id)], (error, results) => {
+        if(error){
+            res.status(500).json({message: 'Erro ao atualizar dispositivo', error: error.message});
+            return;
+        }
+        res.status(200).json({message: 'Dispositivo atualizado com sucesso'});
+    }); 
+}
+
+// Remover um dispositivo existente
+export const removerDispositivo= (req, res) => {
+    const { id } = req.params;
+    const sqlQuery = 'DELETE FROM dispositivos WHERE id=?';
+    conn.query(sqlQuery, [parseInt(id)], (error, results) => {
+        if(error){
+            res.status(500).json({message: 'Erro ao remover dispositivo', error: error.message});
+            return;
+        }
+        res.status(200).json({message: 'Dispositivo removido com sucesso'});
+    });
+}
