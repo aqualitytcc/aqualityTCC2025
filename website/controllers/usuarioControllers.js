@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mysql2 from 'mysql2';
 import base64 from 'base-64';
+import session from 'express-session';
 
 // Conectando ao banco de dados MySQL
 // Certifique-se de que o MySQL está rodando e as credenciais estão corretas
@@ -11,26 +12,9 @@ const conn= mysql2.createConnection({
     user:'root',
     password:'master',
     database:'aquality'});
-
-
 //Criando as listas para armazenar os dados
-let usuarios=[];
 
 //Configurar usuarios
-const obterUsuarios = (req, res) => {
-    conn.query('SELECT * FROM usuarios', (error, dados) => {
-        if(error){
-            res.status(500).json({message: 'Erro ao obter usuários'});
-            return;
-        }
-        usuarios = dados.map(u => ({
-            id: u.id,
-            email: u.email,
-            senha_hash: u.senha_hash
-        }));
-        res.json(usuarios);
-    });
-}
 export const loginUsuario = (req, res) => {
     const {email, senha}   = req.body;
     if(!email || !senha){
@@ -47,7 +31,12 @@ export const loginUsuario = (req, res) => {
             res.status(401).json({ message: 'Email ou senha inválidos' });
             return;
         }
-        const usuario = results[0];
+        const {email, senha}= req.body;
+        req.session.usuario=email;
         res.redirect('/dashboard');
     });
+}
+export const logoutUsuario=(req,res)=>{ 
+    res.clearCookie('connect.sid');
+    res.redirect('/')
 }

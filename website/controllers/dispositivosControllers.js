@@ -17,11 +17,11 @@ const conn= mysql2.createConnection({
 let dispositivos=[];
 // Exportando as funções para serem usadas nas rotas
 // Obter todos os dispositivos
-export const obterDispositivos = (req, res) => {
-    conn.query('SELECT * FROM dispositivos', (error, dados) => {
+export const obterDispositivos =() => {
+    return new Promise((resolve, reject)=> {
+        conn.query('SELECT * FROM dispositivos', (error, dados) => {
         if(error){
-            res.status(500).json({message: 'Erro ao obter dispositivos'});
-            return;
+            reject(error);
         }
         dispositivos = dados.map(d => ({
             id: d.id,
@@ -30,7 +30,8 @@ export const obterDispositivos = (req, res) => {
             descricao: d.descricao,
             criado_em: d.criado_em
         }));
-    res.json(dispositivos);
+        resolve(dispositivos)})
+    
     });
 }
 // Adicionar um novo dispositivo
