@@ -1,9 +1,14 @@
 .card{
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(200, 200, 200);
     border: 1px solid #000000;
-    border-radius: 8px;
+    border-radius: 4px;
+    margin: 15px;
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 200px;
+    height: 250px;
+    align-content: center;
+    text-align: center;
 }
 .verticalNavBar {
   flex-direction: column;
@@ -26,4 +31,18 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap ;
+}
+.btnAdd{
+  position: fixed;
+  align-content: flex-end;
+  bottom: 20px; 
+  right: 20px;   
+  z-index: 1000;
+
+  background-color: rgb(62, 62, 208);
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }

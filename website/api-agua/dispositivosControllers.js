@@ -3,37 +3,23 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mysql2 from 'mysql2';
 import base64 from 'base-64';
+import pool from './pool.js';
 
-// Conectando ao banco de dados MySQL
-// Certifique-se de que o MySQL está rodando e as credenciais estão corretas
-const conn= mysql2.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'master',
-    database:'aquality'});
-
-
-//Criando as listas para armazenar os dados
-let dispositivos=[];
-// Exportando as funções para serem usadas nas rotas
-// Obter todos os dispositivos
-export const obterDispositivos =() => {
-    return new Promise((resolve, reject)=> {
-        conn.query('SELECT * FROM dispositivos', (error, dados) => {
-        if(error){
-            reject(error);
-        }
-        dispositivos = dados.map(d => ({
-            id: d.id,
-            nome: d.nome,
-            usuario_id: d.usuario_id,
-            descricao: d.descricao,
-            criado_em: d.criado_em
-        }));
-        resolve(dispositivos)})
-    
-    });
-}
+export const obterDispositivos = async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM dispositivos');
+    const dispositivos = rows.map(d => ({
+      id: d.id,
+      nome: d.nome,
+      usuario_id: d.usuario_id,
+      descricao: d.descricao,
+      criado_em: d.criado_em
+    }));
+    res.json(dispositivos);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+};
 // Adicionar um novo dispositivo
 export const adicionarDispositivo = (req, res) => {
     const { usuario_id, nome, descricao } = req.body;
