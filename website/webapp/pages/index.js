@@ -30,7 +30,7 @@ export default function Home() {
     <div className={styles.dashboard}>
       <VerticalNavBar />
       {dispositivo.map((d) => (
-        <Card key={d.id} title={d.nome} content={d.id} />
+        <Card key={d.id} title={d.nome} content={d.descricao} datacriacao={d.criado_em} />
       ))} 
       <button className={styles.btnAdd}>Adicionar</button>
       <formAddDisp/>

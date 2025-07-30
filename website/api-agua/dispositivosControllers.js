@@ -15,54 +15,58 @@ export const obterDispositivos = async (req, res) => {
       descricao: d.descricao,
       criado_em: d.criado_em
     }));
-    res.json(dispositivos);
+    return res.status(200).json(dispositivos);
   } catch (error) {
-    res.json({ error: error.message });
+        return res.status(500).json({ error: error.message });
   }
 };
 // Adicionar um novo dispositivo
-export const adicionarDispositivo = (req, res) => {
+export const adicionarDispositivo =async (req, res) => {
     const { usuario_id, nome, descricao } = req.body;
     if (!usuario_id || !nome || !descricao ) {
-        res.status(400).json({ message: 'Todos os campos são obrigatórios' });
-        return;
+        return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
     }
+    try{
     const sqlQuery = 'INSERT INTO dispositivos (usuario_id, nome, descricao) VALUES (?, ?, ?)';
-    conn.query(sqlQuery, [parseInt(usuario_id), nome, descricao], (error, results) => {
-        if (error) {
-            res.status(500).json({ message: 'Erro ao adicionar dispositivo', error: error.message });
-            return;
-        }
-        res.status(201).json({ message: 'Dispositivo adicionado com sucesso'});
-    });
+    await pool.query(sqlQuery, [parseInt(usuario_id), nome, descricao]);
+    return res.status(201).json({ message: 'Dispositivo adicionado com sucesso'});
+    }
+    catch(error){
+        return res.status(500).json({ message: 'Erro ao adicionar dispositivo', error: error.message })
+    }
 }
 // Atualizar um dispositivo existente
-export const atualizarDispositivo = (req, res) => {
+export const atualizarDispositivo = async(req, res) => {
     const {id}=req.params;
     const { usuario_id, nome, descricao } = req.body;
     if (!usuario_id || !nome || !descricao){
-        res.status(400).json({message:'Preencha todos os campos'});
-        return;
+        return res.status(400).json({message:'Preencha todos os campos'});
     }
+    try{
     const sqlQuery = 'UPDATE dispositivos SET usuario_id=?, nome=?, descricao=? WHERE id=?';
-    conn.query(sqlQuery, [parseInt(usuario_id), nome, descricao, parseInt(id)], (error, results) => {
-        if(error){
-            res.status(500).json({message: 'Erro ao atualizar dispositivo', error: error.message});
-            return;
-        }
-        res.status(200).json({message: 'Dispositivo atualizado com sucesso'});
-    }); 
+    const [result]=await pool.query(sqlQuery, [parseInt(usuario_id), nome, descricao, parseInt(id)]);
+    if(result.affectedRows===0){
+        return res.status(404).json({message: 'Dispositivo não encontrado'});
+    }
+    return res.status(200).json({message: 'Dispositivo atualizado com sucesso'});
+    }
+    catch(error){
+        return res.status(500).json({message: 'Erro ao atualizar dispositivo', error: error.message});
+    }
 }
 
 // Remover um dispositivo existente
-export const removerDispositivo= (req, res) => {
+export const removerDispositivo= async(req, res) => {
     const { id } = req.params;
-    const sqlQuery = 'DELETE FROM dispositivos WHERE id=?';
-    conn.query(sqlQuery, [parseInt(id)], (error, results) => {
-        if(error){
-            res.status(500).json({message: 'Erro ao remover dispositivo', error: error.message});
-            return;
+    try{
+        const sqlQuery = 'DELETE FROM dispositivos WHERE id=?';
+        const [result]=await pool.query(sqlQuery, [parseInt(id)]);
+        if(result.affectedRows===0){
+            return res.status(404).json({message: 'Dispositivo não encontrado'});
         }
-        res.status(200).json({message: 'Dispositivo removido com sucesso'});
-    });
+        return res.status(200).json({message: 'Dispositivo removido com sucesso'});
+    }
+    catch(error){
+        return res.status(500).json({message: 'Erro ao remover dispositivo', error: error.message});
+    }
 }
