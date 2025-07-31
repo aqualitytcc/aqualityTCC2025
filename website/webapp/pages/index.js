@@ -32,8 +32,7 @@ export default function Home() {
         title={d.nome} 
         content={d.descricao} 
         datacriacao={new Date(d.criado_em).toLocaleDateString("pt-BR")} />
-      ))} 
-      <button className={styles.btnAdd}>Adicionar</button>
+      ))}
       <FormAddDisp/>
     </div>
   );
