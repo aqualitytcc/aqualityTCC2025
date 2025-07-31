@@ -5,7 +5,7 @@ export default function Card(props) {
         <div className={styles.card}>
             <h2>{props.title}</h2>
             <p>{props.content}</p>
-            <p>{props.datacriacao}</p>
+            <p>Criado em: {props.datacriacao}</p>
         </div>
     );
 }

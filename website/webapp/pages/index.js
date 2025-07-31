@@ -17,8 +17,6 @@ export default function Home() {
         else {
           const data=await response.json();
           setDispositivo(data);
-          console.log(data);
-
         }
       } catch (error) {
         console.log('Erro ao buscar dispositivos:', error);
@@ -30,10 +28,13 @@ export default function Home() {
     <div className={styles.dashboard}>
       <VerticalNavBar />
       {dispositivo.map((d) => (
-        <Card key={d.id} title={d.nome} content={d.descricao} datacriacao={d.criado_em} />
+        <Card key={d.id} 
+        title={d.nome} 
+        content={d.descricao} 
+        datacriacao={new Date(d.criado_em).toLocaleDateString("pt-BR")} />
       ))} 
       <button className={styles.btnAdd}>Adicionar</button>
-      <formAddDisp/>
+      <FormAddDisp/>
     </div>
   );
 }
