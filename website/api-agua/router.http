@@ -2,7 +2,6 @@ POST http://localhost:3001/api/dispositivos
 Content-Type: application/json
 
 {
-  "usuario_id": 2,
-  "nome": "Dispositivo 1",
-  "descricao":"Arduino da casa"
+  "nome": "Dispositivo 2",
+  "descricao":"Arduino da OUTRA casa"
 }

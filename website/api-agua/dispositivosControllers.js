@@ -22,8 +22,10 @@ export const obterDispositivos = async (req, res) => {
 };
 // Adicionar um novo dispositivo
 export const adicionarDispositivo =async (req, res) => {
-    const { usuario_id, nome, descricao } = req.body;
-    if (!usuario_id || !nome || !descricao ) {
+    //No momento usuario_id sera igual a 2 pois ainda nao desenvolvi a parte do multiusuarios
+    const usuario_id ='2';
+    const { nome, descricao } = req.body;
+    if ( !nome || !descricao ) {
         return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
     }
     try{

@@ -1,12 +1,13 @@
 import Card from "@/componentes/Card";
 import VerticalNavBar from "@/componentes/Topo";
-import FormAddDisp from "@/componentes/formAddDisp";
+import FormAddDisp from "@/componentes/FormAddDisp";
 import styles from "@/styles/Styles.module.css";
 import { useState, useEffect } from "react";
 
 
 export default function Home() {
   const [dispositivo, setDispositivo] = useState([]);
+  const [isOpen, setisOpen]=useState(false)
   useEffect(()=>{
     const buscarDispositivos= async()=>{
       try{
@@ -27,13 +28,16 @@ export default function Home() {
   return (
     <div className={styles.dashboard}>
       <VerticalNavBar />
-      {dispositivo.map((d) => (
+      <div className={styles.content}>
+        {dispositivo.map((d) => (
         <Card key={d.id} 
         title={d.nome} 
         content={d.descricao} 
-        datacriacao={new Date(d.criado_em).toLocaleDateString("pt-BR")} />
+        datacriacao={new Date(d.criado_em).toLocaleDateString("pt-br",)} />
       ))}
-      <FormAddDisp/>
+      </div>
+      <button className={styles.btnAdd} onClick={()=>{setisOpen(!isOpen)}}>Adicionar</button>
+      <FormAddDisp open={isOpen}/>
     </div>
   );
 }
