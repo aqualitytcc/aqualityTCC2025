@@ -1,26 +1,34 @@
-//#include <Wire.h>
-//#include <LiquidCrystal_I2C.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
 
-// Inicialização I2C LCD (endereço geral 0x27, pode ser 0x3F dependendo do módulo)
-//LiquidCrystal_I2C lcd(0x27, 16, 2);
+// --- CONFIGURAÇÕES ---
+const char* ssid = " ";  // Nome do WiFi
+const char* password = " ";  // Senha do WiFi
+const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.php";
+
+// --- IDENTIFICADORES DO DISPOSITIVO ---
+// Cada dispositivo/usuário terá um ID. Isso virá da sua tabela 'usuarios'
+const int idDoUsuario = 1; 
+// Localização deste dispositivo específico
+const String localDoDispositivo = " ";  // Local do dispositivo
 
 float calibration_value = 21.34 + 1.5;
 unsigned long int avgval;
 int buffer_arr[10], temp;
 float ph_act;
 
-// Define o pino analógico para o sensor de HH
-#define PH_SENSOR_PIN 34   // Exemplo com GPIO34, pode ser alterado para outros pinos analógicos
+// Define o pino analógico para o sensor de PH
+#define PH_SENSOR_PIN 34  // Exemplo com GPIO34, pode ser alterado para outros pinos analógicos
 
 void setup() {
-  Serial.begin(115200);   // Taxa de transmissão comum do ESP32
-  /*Wire.begin();
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("pH Sensor Ready");
-  delay(2000);
-  lcd.clear();*/
+  Serial.begin(115200); // Taxa de transmissão comum do ESP32
+    Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi conectado!");
 }
 
 void loop() {
@@ -52,14 +60,34 @@ void loop() {
 
   // Mostra no Serial Monitor
   Serial.print("PH: ");
-  Serial.println(ph_act);
+  Serial.println(ph_act, 2);  // 2 dígitos após o ponto decimal
 
-  // Mostra no LCD
-  /*lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("PH:");
-  lcd.setCursor(0, 1);
-  lcd.print(ph_act, 2);*/    // 2 dígitos após o ponto decimal
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(api_url);
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  delay(1000); // Atraso de 1 segundo na leitura
+    // --- MONTA A STRING DE DADOS ATUALIZADA ---
+    String postData = "usuario_id=" + String(idDoUsuario) +
+                      "&localizacao=" + localDoDispositivo +
+                      "&ph=" + String(ph_act, 2) +
+
+    Serial.println("Enviando dados: " + postData);
+
+    int httpResponseCode = http.POST(postData);
+
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println("Código de resposta: " + String(httpResponseCode));
+      Serial.println("Resposta: " + response);
+    } else {
+      Serial.println("Erro no envio. Código: " + String(httpResponseCode));
+    }
+    http.end();
+  } else {
+    Serial.println("WiFi desconectado.");
+  }
+
+  // Espera 5 minutos para o próximo envio
+  delay(300000); 
 }
