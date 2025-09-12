@@ -2,8 +2,8 @@
 #include <HTTPClient.h>
 
 // --- CONFIGURAÇÕES ---
-const char* ssid = " ";  // Nome do WiFi
-const char* password = " ";  // Senha do WiFi
+const char* ssid = "";  // Nome do WiFi
+const char* password = "";  // Senha do WiFi
 const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.php";
 
 // --- IDENTIFICADORES DO DISPOSITIVO ---
