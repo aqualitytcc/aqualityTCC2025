@@ -70,7 +70,7 @@ void loop() {
     // --- MONTA A STRING DE DADOS ATUALIZADA ---
     String postData = "usuario_id=" + String(idDoUsuario) +
                       "&localizacao=" + localDoDispositivo +
-                      "&ph=" + String(ph_act, 2) +
+                      "&ph=" + String(ph_act, 2);
 
     Serial.println("Enviando dados: " + postData);
 
