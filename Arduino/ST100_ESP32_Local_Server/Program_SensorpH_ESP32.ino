@@ -22,7 +22,7 @@ float ph_act;
 
 void setup() {
   Serial.begin(115200); // Taxa de transmissão comum do ESP32
-    Serial.begin(115200);
+  
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -88,6 +88,6 @@ void loop() {
     Serial.println("WiFi desconectado.");
   }
 
-  // Espera 5 minutos para o próximo envio
+  // Espera 5 minutos para a próxima leitura e o próximo envio
   delay(300000); 
 }
