@@ -23,10 +23,10 @@
           <div class="mb-3">
             <label class="form-label">Senha</label><br>
             <input type="password" class="form-control" id="lsenha" name="senha" placeholder="Senha"><br>
-            <input type="submit" style="width: 100%; height: 50px;" class="btn btn-primary" value="Entrar">        
+            <input type="submit" style="width: 100%; height: 50px;" class="btn btn-primary" value="Entrar" aria-label="Entrar na sua conta">      
           </div>
 
-          <label class="registre">Não tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv">Registre-se aqui</a>
+          <label class="registre">Não tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv" aria-label="Abrir formulário de cadastro">Registre-se aqui</a>
         
           </div>
       </div>
@@ -36,7 +36,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body" style="padding: 70px 30px;">
-          
+        
           <h2 class="text-center" style="margin-bottom: 70px;">Cadastro</h2>
           <div class="mb-3">
               <label class="form-label ">Nome completo</label><br>
@@ -50,10 +50,10 @@
           <div class="mb-3">
               <label class="form-label">Senha</label><br>
               <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"><br>
-            <input type="submit" style="width: 100%; height: 50px;" class="btn btn-primary" value="Cadastrar">        
+            <input type="submit" style="width: 100%; height: 50px;" class="btn btn-primary" value="Cadastrar" aria-label="Botão para cadastrar uma nova conta">      
           </div>
 
-          <label class="registre">Já tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#logindiv">Entre aqui</a>
+          <label class="registre">Já tem uma conta?</label> <a class="registre" data-bs-toggle="modal" data-bs-target="#logindiv" aria-label="Abrir formulário de login">Entre aqui</a>
         </div>
       </div>
     </div>
@@ -61,29 +61,29 @@
   <div class="sticky-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand text-white" href="#"><img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;"><span style="font-weight: 650;">Aquality</span></a>
+          <a class="navbar-brand text-white" href="#" aria-label="Ir para a página inicial da Aquality"><img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" alt="Logo da Aquality" style="height: 60px;"><span style="font-weight: 650;">Aquality</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul  class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link text-white" href="#">Início</a>
+                <a class="nav-link text-white" href="#" aria-label="Ir para a seção Início">Início</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#NossoProjeto">Nosso Projeto</a>
+                <a class="nav-link text-white" href="#NossoProjeto" aria-label="Ir para a seção Nosso Projeto">Nosso Projeto</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#Inovacoes">Inovações</a>
+                <a class="nav-link text-white" href="#Inovacoes" aria-label="Ir para a seção Inovações">Inovações</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link  text-white" href="#contato">Contato</a>
+                <a class="nav-link text-white" href="#contato" aria-label="Ir para a seção Contato">Contato</a>
               </li>
               <li class="nav-item">
-                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv" aria-label="Botão para abrir o formulário de login">Login</button>
               </li>
               <li style="margin-left: 10px;"class="nav-item">
-                <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv">Cadastro</button>
+                <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv" aria-label="Botão para abrir o formulário de cadastro">Cadastro</button>
               </li>
             </ul>
         </div>
@@ -108,38 +108,38 @@
             <p>
               Nosso sistema para monitoramento de qualidade da água utiliza equipamentos conectados ao Arduino o que permite obter informações e as transmite em tempo real.
               Para isso, é necessária a utilização de sensores que captam as informações como pH, condutividade, turbidez, entre outros.
-              Todas essas informações podem ser acessadas através do Aplicativo para Desktop ou App Mobile da Aquality. 
+              Todas essas informações podem ser acessadas através do Aplicativo para Desktop ou App Mobile da Aquality.  
             </p>
           </div>
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Carrossel de imagens sobre o projeto Aquality.">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Ir para o slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Ir para o slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Ir para o slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100" alt="Imagem de capa do projeto Aquality, mostrando um rio e ícones de sensores e gráficos.">
             </div>
             <div class="carousel-item">
-              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100" alt="Imagem de capa do projeto Aquality, com destaque para a importância do monitoramento da água.">
             </div>
             <div class="carousel-item">
-              <img src="../imagens/Capa Aquality.png" class="d-block w-100">
+              <img src="../imagens/Capa Aquality.png" class="d-block w-100" alt="Imagem de capa do projeto Aquality, com foco nos sensores e na transmissão de dados em tempo real.">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Slide anterior">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Próximo slide">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Próximo</span>
           </button>
           
+        </div>
       </div>
-    </div>
-    </div>
+      </div>
 
     </section>
     <section id="Inovacoes" class="py-5 px-4">
@@ -153,7 +153,7 @@
             <div class="col g-4">
               <div class="card text-center">
                 <div class="card-body">
-                  <img src="../imagens/placa-arduino-uno-100.png">
+                  <img src="../imagens/placa-arduino-uno-100.png" alt="Ilustração de uma placa de circuito ESP32, que serve como plataforma principal do nosso sistema.">
                   <h4 class="card-title">ESP32 como Plataforma Principal</h4>
                   <ul class="justify">
                     <li>Monitoramento em tempo real</li>
@@ -165,7 +165,7 @@
               <br>
               <div class="card text-center">
                 <div class="card-body">
-                  <img src="../imagens/sensor-100.png">
+                  <img src="../imagens/sensor-100.png" alt="Ícone de um sensor de água.">
                   <h4 class="card-title">Sensores Utilizados</h4>
                   <ul class="justify">
                     <li><b>Ph</b>: Mede a acidez ou alcalinidade da água</li>
@@ -179,7 +179,7 @@
             <div class="col">
               <div class="card text-center">
                 <div class="card-body">
-                  <img src="../imagens/gráfico-100.png">
+                  <img src="../imagens/gráfico-100.png" alt="Ícone de um gráfico de linhas em um painel, representando nosso dashboard de monitoramento.">
                   <h4 class="card-title">Dashboard em Tempo Real</h4>
                   <ul class="justify">
                     <li>Visualização remota do dados captados pelos sensores</li>
@@ -191,7 +191,7 @@
               <br>
               <div class="card text-center">
                 <div class="card-body">
-                  <img src="../imagens/torre-de-água-100.png">
+                  <img src="../imagens/torre-de-água-100.png" alt="Ícone de uma torre de água, representando os locais onde nosso sistema pode ser aplicado.">
                   <h4 class="card-title">Cenários de Aplicação</h4>
                   <ul class="justify">
                     <li><b>Reservatórios urbanos</b>: Controle de tratamento da água</li>
@@ -217,8 +217,12 @@
 
 
       </div>
-    </div>
+      </div>
     </section>
   </main>
+  <script src="https://vlibras.gov.br/widget/vlibras-plugin.js"></script>
+  <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/widget');
+  </script>
 </body>
 </html>
