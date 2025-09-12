@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/dispositivos
+Content-Type: application/json
+
+{
+  "nome": "Dispositivo 2",
+  "descricao":"Arduino da OUTRA casa"
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquality</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Estilo para o botão FAB */
+        .fab-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fab-button:hover {
+            background-color: #0056b3;
+        }
+
+        .fab-button img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px; background-color: #1e3a8a;">
+            <a class="navbar-brand text-white" href="#"><img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png"
+                    style="height: 60px;"><span style="font-weight: 650;">Aquality</span></a>
+            <hr>
+            <ul id="sidebar-menu" class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" onclick="showSection('home-section', this)" class="nav-link active"
+                        aria-current="page">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('dispositivos-section', this)" class="nav-link text-white">
+                        Dispositivos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('leituras-section', this)" class="nav-link text-white">
+                        Leituras
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown"> <a href="#"
+                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false"> <img src="../imagens/usuario.png" alt="" width="32"
+                        height="32" class="rounded-circle me-2"> <strong>Carlos</strong> </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item" href="#">Configurações</a></li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <main class="content-area">
+            <div id="home-section" class="content-section">
+                <h1>Bem-vindo, Carlos!</h1>
+                <p>Aqui ficará o conteúdo principal da sua página, como gráficos e tabelas de leitura.</p>
+            </div>
+
+            <div id="leituras-section" class="content-section" style="display: none;">
+                <h1>Leituras dos Sensores</h1>
+                <p>Aqui você verá os gráficos e dados de leituras em tempo real.</p>
+            </div>
+
+            <div id="dispositivos-section" class="content-section" style="display: none;">
+                <h1>Gerenciar Dispositivos</h1>
+                <p>Aqui você pode adicionar, remover ou configurar seus dispositivos.</p>
+
+                <button class="fab-button" title="Adicionar Novo Dispositivo" data-bs-toggle="modal" data-bs-target="#addDeviceModal">
+                    <img src="../imagens/adicionar.png" alt="Adicionar" style="width: 34px; height: 34px;">
+                </button>
+            </div>
+        </main>
+        
+        <div class="modal fade" id="addDeviceModal" tabindex="-1" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDeviceModalLabel">Adicionar Novo Dispositivo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="deviceName" class="form-label">Nome do Dispositivo</label>
+                                <input type="text" class="form-control" id="deviceName" placeholder="Ex: Sensor da Piscina">
+                            </div>
+                            <div class="mb-3">
+                                <label for="deviceLocation" class="form-label">Localização</label>
+                                <input type="text" class="form-control" id="deviceLocation" placeholder="Ex: Área externa">
+                            </div>
+                            <div class="mb-3">
+                                <label for="deviceType" class="form-label">Tipo de Dispositivo</label>
+                                <select class="form-select" id="deviceType">
+                                    <option selected>Selecione o tipo...</option>
+                                    <option value="ph">Sensor de pH</option>
+                                    <option value="turbidez">Sensor de Turbidez</option>
+                                    <option value="condutividade">Sensor de Condutividade</option>
+                                    <option value="temperatura">Sensor de Temperatura</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Salvar Dispositivo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId, element) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            document.getElementById(sectionId).style.display = 'block';
+
+            const menuLinks = document.querySelectorAll('#sidebar-menu .nav-link');
+            menuLinks.forEach(link => {
+                link.classList.remove('active');
+                link.classList.add('text-white');
+            });
+
+            element.classList.add('active');
+            element.classList.remove('text-white');
+        }
+    </script>
+</body>
+
+</html>
