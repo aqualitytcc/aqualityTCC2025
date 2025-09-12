@@ -10,7 +10,7 @@ const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.
 // Cada dispositivo/usuário terá um ID. Isso virá da sua tabela 'usuarios'
 const int idDoUsuario = 1; 
 // Localização deste dispositivo específico
-const String localDoDispositivo = " ";  // Local do dispositivo
+const String localDoDispositivo = "Casa01";
 
 float calibration_value = 21.34 + 1.5;
 unsigned long int avgval;
