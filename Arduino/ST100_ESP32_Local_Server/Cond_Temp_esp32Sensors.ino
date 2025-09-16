@@ -9,11 +9,10 @@ const char* ssid = "";  // Nome do WiFi
 const char* password = "";  // Senha do WiFi
 const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.php";
 
-// --- IDENTIFICADORES DO DISPOSITIVO ---
-// Cada dispositivo/usuário terá um ID. Isso virá da sua tabela 'usuarios'
-const int idDoUsuario = 1; 
-// Localização deste dispositivo específico
-const String localDoDispositivo = "Casa01";
+// --- IDENTIFICADOR ÚNICO DO DISPOSITIVO ---
+// Este código deve ser único para cada placa ESP.
+// Você irá inseri-lo manualmente na tabela `dispositivos` do seu banco de dados.
+const String codigoVerificacao = "ESP-AQUALITY-01";
 
 // -------------------- Sensor de Temperatura DS18B20 --------------------
 // Pino do DS18B20 (ajuste conforme ligação)
@@ -65,15 +64,15 @@ void loop() {
   Serial.println("--------------------------");
 
     if (WiFi.status() == WL_CONNECTED) {
-    HTTPClient http;
-    http.begin(api_url);
-    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+        HTTPClient http;
+        http.begin(api_url);
+        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    // --- MONTA A STRING DE DADOS ATUALIZADA ---
-    String postData = "usuario_id=" + String(idDoUsuario) +
-                      "&localizacao=" + localDoDispositivo +
-                      "&temperatura=" + String(temperatureC, 2) +
-                      "&condutividade=" + String(tdsValue, 2);
+        // --- MONTA A STRING DE DADOS ATUALIZADA ---
+        // Agora envia apenas o código de verificação
+        String postData = "codigo_verificacao=" + codigoVerificacao +
+                          "&temperatura=" + String(temperatureC, 2) +
+                          "&condutividade=" + String(tdsValue, 2);
 
     Serial.println("Enviando dados: " + postData);
 
