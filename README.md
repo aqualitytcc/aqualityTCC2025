@@ -1,3 +1,3 @@
 Projeto TCC
 
-Criado por Henzo, Fellipe, Matheus, Victor, Heitor, Erick, Luiz Fernando, João Muzitano
+Criado por Henzo, Fellipe, Matheus Henrique, Victor, Heitor, Erick Dionisio, Luiz Fernando, João Pedro
