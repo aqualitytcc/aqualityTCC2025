@@ -11,8 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
-  <link rel="icon" href="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png"
-    type="image/x-icon">
+  <link rel="icon" href="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,6 +21,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Modal Login -->
   <div id="logindiv" class="modal fade">
@@ -39,7 +39,7 @@
             <input type="button" style="width: 100%; height: 50px;" onclick="login()" class="btn btn-primary"
               value="Entrar">
           </div>
-          <label class="registre">Não tem uma conta?</label> 
+          <label class="registre">Não tem uma conta?</label>
           <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv">Registre-se aqui</a>
         </div>
       </div>
@@ -69,7 +69,7 @@
             <input type="button" style="width: 100%; height: 50px;" onclick="enviar()" class="btn btn-primary"
               value="Cadastrar">
           </div>
-          <label class="registre">Já tem uma conta?</label> 
+          <label class="registre">Já tem uma conta?</label>
           <a class="registre" data-bs-toggle="modal" data-bs-target="#logindiv">Entre aqui</a>
         </div>
       </div>
@@ -82,9 +82,8 @@
         <img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;">
         <span style="font-weight: 650;">A-Quality</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -102,12 +101,10 @@
             <a class="nav-link  text-white" href="#contato">Contato</a>
           </li>
           <li class="nav-item">
-            <button class="btn btn-outline-light" data-bs-toggle="modal"
-              data-bs-target="#logindiv">Login</button>
+            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
           </li>
           <li style="margin-left: 10px;" class="nav-item">
-            <button class="btn bg-white" data-bs-toggle="modal"
-              data-bs-target="#cadasdiv">Cadastro</button>
+            <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv">Cadastro</button>
           </li>
         </ul>
       </div>
@@ -130,6 +127,17 @@
               mas dependem da água para sua subsistência encontram em um sistema de monitoramento de água
               a segurança que precisam para desempenharem suas atividades.
             </p>
+            <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+            <div class="player-ctrl">
+              <!-- Play Button -->
+              <a id="podcast-play" onclick="playShow()"><i class="ion-ios-play"></i></a>
+              <!-- Pause Button -->
+              <a id="podcast-pause" onclick="pauseShow()" style="display:none;"><i class="ion-ios-pause"></i></a>
+            </div>
+            <!-- Audio player -->
+            <audio id="podcast-audio">
+              <source src="../audio/AD_Devido.mp3" type="audio/mp4">
+            </audio>
           </div>
           <div class="col-md-6 justify">
             <p>
@@ -140,11 +148,21 @@
               Todas essas informações podem ser acessadas através do site ou App Mobile
               da A-Quality.
             </p>
+            <div class="player-ctrl">
+              <!-- Play Button -->
+              <a id="podcast-play" onclick="playShow()"><i class="ion-ios-play"></i></a>
+              <!-- Pause Button -->
+              <a id="podcast-pause" onclick="pauseShow()" style="display:none;"><i class="ion-ios-pause"></i></a>
+            </div>
+            <!-- Audio player -->
+            <audio id="podcast-audio">
+              <source src="../audio/AD_Nosso.mp3" type="audio/mp4">
+            </audio>
           </div>
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
@@ -175,64 +193,64 @@
         </div>
       </div>
     </section>
-    <section id="Inovacoes" class="py-5 px-4">
+    <section id="Inovacoes" class="py-5 bg-light">
       <div class="container">
         <div class="text-center mb-5">
-          <h2>Inovações</h2>
-          <p>Conheça nosso Sistema!.</p>
+          <h2 class="fw-bold">Inovações do Sistema</h2>
+          <p class="lead text-muted">Tecnologia acessível para um monitoramento eficiente.</p>
         </div>
-        <div class="container-fluid px-4">
-          <div class="row g-4">
-            <div class="col g-4">
-              <div class="card text-center">
-                <div class="card-body">
-                  <img src="../imagens/placa-arduino-uno-100.png">
-                  <h4 class="card-title">ESP32 como Plataforma Principal</h4>
-                  <ul class="justify">
-                    <li>Monitoramento em tempo real</li>
-                    <li>Baixo consumo de energia</li>
-                    <li>Integração simplificada</li>
-                  </ul>
-                </div>
-              </div>
-              <br>
-              <div class="card text-center">
-                <div class="card-body">
-                  <img src="../imagens/sensor-100.png">
-                  <h4 class="card-title">Sensores Utilizados</h4>
-                  <ul class="justify">
-                    <li><b>Ph</b>: Mede a acidez ou alcalinidade da água</li>
-                    <li><b>Turbidez</b>: Identifica partículas que tornam a água turva</li>
-                    <li><b>Condutividade</b>: Detecta a presença de impurezas na água</li>
-                    <li><b>Temperatura</b>: Mede variações térmicas da água</li>
-                  </ul>
-                </div>
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <div class="icon-circle mb-3"><i class="fas fa-microchip fa-2x"></i></div>
+                <h4 class="card-title">ESP32</h4>
+                <ul>
+                  <li>Monitoramento em tempo real</li>
+                  <li>Baixo consumo de energia</li>
+                  <li>Integração simplificada</li>
+                </ul>
               </div>
             </div>
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <img src="../imagens/gráfico-100.png">
-                  <h4 class="card-title">Dashboard em Tempo Real</h4>
-                  <ul class="justify">
-                    <li>Visualização remota do dados captados pelos sensores</li>
-                    <li>Alertas automáticos sobre alterações na água</li>
-                    <li>Histórico de medições anteriores</li>
-                  </ul>
-                </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <div class="icon-circle mb-3"><i class="fas fa-thermometer-half fa-2x"></i></div>
+                <h4 class="card-title">Sensores Utilizados</h4>
+                <ul>
+                  <li><b>pH:</b> Mede a acidez da água</li>
+                  <li><b>Turbidez:</b> Identifica partículas</li>
+                  <li><b>Condutividade:</b> Detecta impurezas</li>
+                  <li><b>Temperatura:</b> Mede variações</li>
+                </ul>
               </div>
-              <br>
-              <div class="card text-center">
-                <div class="card-body">
-                  <img src="../imagens/torre-de-água-100.png">
-                  <h4 class="card-title">Cenários de Aplicação</h4>
-                  <ul class="justify">
-                    <li><b>Reservatórios urbanos</b>: Controle de tratamento da água</li>
-                    <li><b>Agricultura</b>: Qualidade da água para irrigação</li>
-                    <li><b>Aquicultura</b>: Monitoramento de tanques de peixes</li>
-                    <li><b>Projetos ambientais</b>: Análise de rios e lagos</li>
-                  </ul>
-                </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <div class="icon-circle mb-3"><i class="fas fa-chart-line fa-2x"></i></div>
+                <h4 class="card-title">Dashboard em Tempo Real</h4>
+                <ul>
+                  <li>Visualização remota dos dados</li>
+                  <li>Alertas automáticos</li>
+                  <li>Histórico de medições</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <div class="icon-circle mb-3"><i class="fas fa-industry fa-2x"></i></div>
+                <h4 class="card-title">Cenários de Aplicação</h4>
+                <ul>
+                  <li>Reservatórios urbanos</li>
+                  <li>Agricultura e irrigação</li>
+                  <li>Aquicultura e piscicultura</li>
+                  <li>Projetos ambientais</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -261,6 +279,27 @@
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+    var podcastAudio = document.getElementById('podcast-audio');
+
+    var playBtn = document.getElementById('podcast-play');
+
+    var pauseBtn = document.getElementById('podcast-pause');
+
+    // Play audio & mostra pause btn
+    var playShow = function () {
+      podcastAudio.play();
+      playBtn.style.display = "none";
+      pauseBtn.style.display = "inline-block";
+    };
+
+    // Pause audio & mostra play btn
+    var pauseShow = function () {
+      podcastAudio.pause();
+      playBtn.style.display = "inline-block";
+      pauseBtn.style.display = "none";
+    };
   </script>
 </body>
+
 </html>
