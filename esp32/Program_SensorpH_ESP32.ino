@@ -6,7 +6,7 @@
 const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.php";
 
 // --- IDENTIFICADOR ÚNICO DO DISPOSITIVO ---
-// Este código deve ser único para cada placa ESP.
+// Este código deve ser único para cada dispositivo.
 // Você irá inseri-lo manualmente na tabela `dispositivos` do seu banco de dados.
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
