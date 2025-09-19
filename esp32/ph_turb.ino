@@ -10,7 +10,7 @@ const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.ph
 // Você irá inseri-lo manualmente na tabela `dispositivos` do seu banco de dados.
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
-float calibration_value = 21.34 + 1.5;
+float calibration_value = 21.34 + 1.0;
 unsigned long int avgval;
 int buffer_arr[10], temp;
 float ph_act;
