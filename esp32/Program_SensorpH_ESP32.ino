@@ -1,10 +1,9 @@
 #include <WiFi.h>
+#include <WiFiManager.h>
 #include <HTTPClient.h>
 
 // --- CONFIGURAÇÕES ---
-const char* ssid = "";  // Nome do WiFi
-const char* password = "";  // Senha do WiFi
-const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.php";
+const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.php";
 
 // --- IDENTIFICADOR ÚNICO DO DISPOSITIVO ---
 // Este código deve ser único para cada placa ESP.
@@ -17,17 +16,31 @@ int buffer_arr[10], temp;
 float ph_act;
 
 // Define o pino analógico para o sensor de PH
-#define PH_SENSOR_PIN 34  // Exemplo com GPIO34, pode ser alterado para outros pinos analógicos
+#define PH_SENSOR_PIN 34  // GPIO34, pode ser alterado para outros pinos analógicos
 
 void setup() {
   Serial.begin(115200); // Taxa de transmissão comum do ESP32
   
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("\nWiFi conectado!");
+  // --- Início da Mágica do WiFiManager ---
+    WiFiManager wm;
+
+    // Descomente a linha abaixo para limpar as credenciais salvas para teste
+    // wm.resetSettings();
+
+    // Tenta se conectar ao WiFi. Se não conseguir, ele inicia o portal de configuração.
+    // O "true" no final significa que a conexão será bloqueada até ser bem-sucedida.
+    if (!wm.autoConnect("A-Quality-Setup-1.1")) {
+        Serial.println("Falha ao conectar e o tempo limite expirou.");
+        // Você pode decidir reiniciar o ESP ou tentar novamente.
+        ESP.restart();
+    }
+    
+    // Se chegou até aqui, o ESP32 está conectado ao WiFi do cliente!
+    Serial.println("");
+    Serial.println("WiFi conectado!");
+    Serial.print("Endereço IP: ");
+    Serial.println(WiFi.localIP());
+    // --- Fim da Mágica do WiFiManager ---
 }
 
 void loop() {
@@ -67,7 +80,6 @@ void loop() {
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
         // --- MONTA A STRING DE DADOS ATUALIZADA ---
-        // Agora envia apenas o código de verificação
         String postData = "codigo_verificacao=" + codigoVerificacao +
                           "&ph=" + String(ph_act, 2);
     
