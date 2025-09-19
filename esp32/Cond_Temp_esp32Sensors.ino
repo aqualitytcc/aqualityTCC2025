@@ -2,15 +2,14 @@
 #include <DallasTemperature.h>
 #include <Wire.h>
 #include <WiFi.h>
+#include <WiFiManager.h>
 #include <HTTPClient.h>
 
 // --- CONFIGURAÇÕES ---
-const char* ssid = "";  // Nome do WiFi
-const char* password = "";  // Senha do WiFi
-const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/dados/receber_dados.php";
+const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.php";
 
 // --- IDENTIFICADOR ÚNICO DO DISPOSITIVO ---
-// Este código deve ser único para cada placa ESP.
+// Este código deve ser único para cada dispositivo.
 // Você irá inseri-lo manualmente na tabela `dispositivos` do seu banco de dados.
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
@@ -34,12 +33,26 @@ void setup() {
   sensors.begin();
   Serial.println("Sensores Inicializados!");
 
-    WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("\nWiFi conectado!");
+    // --- Início da Mágica do WiFiManager ---
+    WiFiManager wm;
+
+    // Descomente a linha abaixo para limpar as credenciais salvas para teste
+    // wm.resetSettings();
+
+    // Tenta se conectar ao WiFi. Se não conseguir, ele inicia o portal de configuração.
+    // O "true" no final significa que a conexão será bloqueada até ser bem-sucedida.
+    if (!wm.autoConnect("A-Quality-Setup-1.2")) {
+        Serial.println("Falha ao conectar e o tempo limite expirou.");
+        // Você pode decidir reiniciar o ESP ou tentar novamente.
+        ESP.restart();
+    }
+    
+    // Se chegou até aqui, o ESP32 está conectado ao WiFi do cliente!
+    Serial.println("");
+    Serial.println("WiFi conectado!");
+    Serial.print("Endereço IP: ");
+    Serial.println(WiFi.localIP());
+    // --- Fim da Mágica do WiFiManager ---
 }
 
 void loop() {
