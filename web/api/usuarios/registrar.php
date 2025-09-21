@@ -6,7 +6,7 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 // Inclui o arquivo de configuração do banco de dados. O __DIR__ garante que o caminho seja sempre correto.
-require_once __DIR__ . '/../../config.php';
+require_once __DIR__ . '/../../../config.php';
 
 // Define o cabeçalho da resposta como JSON para que o frontend entenda.
 header("Content-Type: application/json; charset=UTF-8");
