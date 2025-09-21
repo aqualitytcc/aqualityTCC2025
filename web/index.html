@@ -76,7 +76,7 @@
     </div>
   </div>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
         <img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;">
@@ -100,10 +100,10 @@
           <li class="nav-item">
             <a class="nav-link  text-white" href="#contato">Contato</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ms-lg-2">
             <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#logindiv">Login</button>
           </li>
-          <li style="margin-left: 10px;" class="nav-item">
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
             <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#cadasdiv">Cadastro</button>
           </li>
         </ul>
@@ -376,6 +376,7 @@
             if (resultado.status === 'sucesso') {
                 alert(resultado.mensagem);
                 // Redireciona o usuário para o dashboard em caso de sucesso
+                localStorage.setItem('usuario_nome', resultado.dados.nome);
                 window.location.href = 'dashboard.html';
             } else {
                 alert('Erro: ' + resultado.mensagem);
