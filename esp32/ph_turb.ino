@@ -6,99 +6,87 @@
 const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.php";
 
 // --- IDENTIFICADOR ÚNICO DO DISPOSITIVO ---
-// Este código deve ser único para cada dispositivo.
-// Você irá inseri-lo manualmente na tabela `dispositivos` do seu banco de dados.
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
+// --- CONFIGURAÇÃO DO DEEP SLEEP ---
+// Tempo em microssegundos. 5 minutos = 300 segundos
+// 300 * 1000000 = 300.000.000
+// A notação "e6" significa "vezes 10 elevado a 6" (1.000.000)
+const uint64_t TEMPO_DE_SONO_US = 300e6; 
+
+// --- Variáveis do Sensor de pH ---
 float calibration_value = 21.34 + 1.0;
 unsigned long int avgval;
 int buffer_arr[10], temp;
 float ph_act;
 
-// Define o pino analógico para o sensor de PH
-#define PH_SENSOR_PIN 34  // GPIO34, pode ser alterado para outros pinos analógicos
+#define PH_SENSOR_PIN 34  // GPIO34
 
 void setup() {
-  Serial.begin(115200); // Taxa de transmissão comum do ESP32
-  
-  // --- Início da Mágica do WiFiManager ---
-    WiFiManager wm;
-
-    // Descomente a linha abaixo para limpar as credenciais salvas para teste
-    // wm.resetSettings();
-
-    // Tenta se conectar ao WiFi. Se não conseguir, ele inicia o portal de configuração.
-    // O "true" no final significa que a conexão será bloqueada até ser bem-sucedida.
-    if (!wm.autoConnect("A-Quality-Setup-1.1")) {
-        Serial.println("Falha ao conectar e o tempo limite expirou.");
-        // Você pode decidir reiniciar o ESP ou tentar novamente.
-        ESP.restart();
-    }
-    
-    // Se chegou até aqui, o ESP32 está conectado ao WiFi do cliente!
-    Serial.println("");
-    Serial.println("WiFi conectado!");
-    Serial.print("Endereço IP: ");
-    Serial.println(WiFi.localIP());
-    // --- Fim da Mágica do WiFiManager ---
+  Serial.begin(115200);
+  
+  // --- Início do WiFiManager ---
+  WiFiManager wm;
+  if (!wm.autoConnect("A-Quality Setup 1.1")) {
+    Serial.println("Falha ao conectar, reiniciando...");
+    ESP.restart();
+  }
+  Serial.println("\nWiFi conectado!");
+  Serial.print("Endereço IP: ");
+  Serial.println(WiFi.localIP());
 }
 
 void loop() {
-  // Lê os dados analógicos
-  for (int i = 0; i < 10; i++) {
-    buffer_arr[i] = analogRead(PH_SENSOR_PIN);
-    delay(30);
-  }
+  // Toda a lógica que estava no loop() agora será executada apenas UMA VEZ por ciclo de despertar.
+  
+  // 1. Lê os dados do sensor de pH
+  for (int i = 0; i < 10; i++) {
+    buffer_arr[i] = analogRead(PH_SENSOR_PIN);
+    delay(30);
+  }
+  for (int i = 0; i < 9; i++) { // Ordena
+    for (int j = i + 1; j < 10; j++) {
+      if (buffer_arr[i] > buffer_arr[j]) {
+        temp = buffer_arr[i];
+        buffer_arr[i] = buffer_arr[j];
+        buffer_arr[j] = temp;
+      }
+    }
+  }
+  avgval = 0;
+  for (int i = 2; i < 8; i++) // Pega a média
+    avgval += buffer_arr[i];
 
-  // Organiza os dados (ordenação por flutuação)
-  for (int i = 0; i < 9; i++) {
-    for (int j = i + 1; j < 10; j++) {
-      if (buffer_arr[i] > buffer_arr[j]) {
-        temp = buffer_arr[i];
-        buffer_arr[i] = buffer_arr[j];
-        buffer_arr[j] = temp;
-      }
-    }
-  }
+  float ph_volt = (float)avgval * 3.3 / 4095.0 / 6;
+  ph_act = -5.70 * ph_volt + calibration_value;
+  Serial.print("PH: ");
+  Serial.println(ph_act, 2);
 
-  // Pega a média dos dados do meio
-  avgval = 0;
-  for (int i = 2; i < 8; i++)
-    avgval += buffer_arr[i];
+  // 2. Envia os dados para a API
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(api_url);
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  // Converte para tensão ESP32
-  float ph_volt = (float)avgval * 3.3 / 4095.0 / 6;
-  ph_act = -5.70 * ph_volt + calibration_value;
+    String postData = "codigo_verificacao=" + codigoVerificacao +
+                      "&ph=" + String(ph_act, 2);
+    
+    Serial.println("Enviando dados: " + postData);
+    int httpResponseCode = http.POST(postData);
 
-  // Mostra no Serial Monitor
-  Serial.print("PH: ");
-  Serial.println(ph_act, 2);  // 2 dígitos após o ponto decimal
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println("Código de resposta: " + String(httpResponseCode));
+      Serial.println("Resposta: " + response);
+    } else {
+      Serial.println("Erro no envio. Código: " + String(httpResponseCode));
+    }
+    http.end();
+  } else {
+    Serial.println("WiFi desconectado.");
+  }
 
-  if (WiFi.status() == WL_CONNECTED) {
-        HTTPClient http;
-        http.begin(api_url);
-        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        // --- MONTA A STRING DE DADOS ATUALIZADA ---
-        String postData = "codigo_verificacao=" + codigoVerificacao +
-                          "&ph=" + String(ph_act, 2);
-    
-    Serial.println("Enviando dados: " + postData);
-
-    int httpResponseCode = http.POST(postData);
-
-    if (httpResponseCode > 0) {
-      String response = http.getString();
-      Serial.println("Código de resposta: " + String(httpResponseCode));
-      Serial.println("Resposta: " + response);
-    } else {
-      Serial.println("Erro no envio. Código: " + String(httpResponseCode));
-    }
-    http.end();
-  } else {
-    Serial.println("WiFi desconectado.");
-  }
-
-  // Espera 5 minutos para a próxima leitura e o próximo envio
-  delay(300000); 
+  // 3. Entra em modo de sono profundo
+  Serial.println("Entrando em Deep Sleep por 5 minutos...");
+  ESP.deepSleep(TEMPO_DE_SONO_US);
 }
