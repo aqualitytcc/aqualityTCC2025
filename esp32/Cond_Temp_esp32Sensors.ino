@@ -14,8 +14,8 @@ const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.ph
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
 // --- CONFIGURAÇÃO DO DEEP SLEEP ---
-// Tempo em microssegundos. 5 minutos = 300 segundos = 300e6 microssegundos.
-const uint64_t TEMPO_DE_SONO_US = 300e6;
+// Tempo em microssegundos. 1 minuto = 60 segundos = 60e6 microssegundos.
+const uint64_t TEMPO_DE_SONO_US = 60e6;
 
 // -------------------- Sensor de Temperatura DS18B20 --------------------
 #define ONE_WIRE_BUS 23
@@ -23,7 +23,7 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 // -------------------- Sensor de Condutividade (TDS) --------------------
-const int TDS_PIN = 12;
+const int TDS_PIN = 34;
 float calibrationConstant = 0.5;
 float supplyVoltage = 3.3;
 
@@ -96,6 +96,7 @@ void loop() {
   }
 
   // 4. Entra em modo de sono profundo
-  Serial.println("Entrando em Deep Sleep por 5 minutos...");
-  ESP.deepSleep(TEMPO_DE_SONO_US);
+  //Serial.println("Entrando em Deep Sleep por 1 minuto...");
+  //ESP.deepSleep(TEMPO_DE_SONO_US);
+  delay(60000);
 }
