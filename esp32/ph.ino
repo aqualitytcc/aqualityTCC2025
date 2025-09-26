@@ -15,7 +15,7 @@ const String codigoVerificacao = "ESP-AQUALITY-01";
 const uint64_t TEMPO_DE_SONO_US = 60e6; 
 
 // --- Variáveis do Sensor de pH ---
-float calibration_value = 21.34 + 1.0;
+float calibration_value = 21.34;
 unsigned long int avgval;
 int buffer_arr[10], temp;
 float ph_act;
