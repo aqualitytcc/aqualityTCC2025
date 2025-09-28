@@ -10,10 +10,10 @@ const char* api_url = "http://tcc3eetecgrupo5.tecnologia.ws/api/receber_dados.ph
 const String codigoVerificacao = "ESP-AQUALITY-01";
 
 // --- CONFIGURAÇÃO DO DEEP SLEEP ---
-const uint64_t TEMPO_DE_SONO_US = 60e6; // 1 minuto
+//const uint64_t TEMPO_DE_SONO_US = 60e6; // 1 minuto
 
 // --- PONTOS DE CALIBRAÇÃO DO SENSOR DE TURBIDEZ ---
-const float VOLTAGEM_AGUA_LIMPA = 1.69;
+const float VOLTAGEM_AGUA_LIMPA = 1.73;
 const float VOLTAGEM_AGUA_TURVA = 0.0;
 const int MAXIMO_ESCALA = 100;
 
@@ -95,7 +95,7 @@ void loop() {
 
   // IMPRESSÃO DOS VALORES DE PH
   Serial.print("Voltagem pH: "); // SUGESTÃO: Melhorada a clareza da mensagem
-  Serial.print(ph_volt, 3);
+  Serial.print(ph_volt, 2);
   Serial.print(" V  |  pH: ");
   Serial.println(ph_act, 2);
 
