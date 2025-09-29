@@ -1,3 +1,11 @@
 Projeto TCC
 
-Criado por Henzo, Fellipe, Matheus Henrique, Victor, Heitor, Erick Dionisio, Luiz Fernando, João Pedro
+Criado por:
+Henzo dos Santos Silva
+Fellipe Conradi Pires
+Matheus Henrique Monteiro
+Victor Borges Garcia
+Heitor de Paula Marsiglia
+Erick Dionisio Fonseca da Silva
+Luiz Fernando Damasceno Maris
+João Pedro Oliveira Muzitano
