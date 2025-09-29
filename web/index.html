@@ -5,16 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A-Quality</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-    crossorigin="anonymous"></script>
   <link rel="icon" href="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style type="text/css">
     .fa-instagram {
       font-size: 50px;
@@ -23,7 +21,6 @@
 </head>
 
 <body>
-  <!-- Modal Login -->
   <div id="logindiv" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -45,7 +42,6 @@
       </div>
     </div>
   </div>
-  <!-- Modal Cadastro -->
   <div id="cadasdiv" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -61,7 +57,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label ">Email</label><br>
-            <input type="text" class="form-control" id="email" placeholder="Usuário">
+            <input type="email" class="form-control" id="email" placeholder="seu-email@exemplo.com">
           </div>
           <div class="mb-3">
             <label class="form-label">Senha</label><br>
@@ -75,8 +71,7 @@
       </div>
     </div>
   </div>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
         <img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;">
@@ -111,300 +106,144 @@
     </div>
   </nav>
   <main>
-    <section id="NossoProjeto" class="py-5 bg-light">
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white">
       <div class="container">
+        <img src="../imagens/logo-hero.png" alt="Logotipo A-Quality" class="hero-logo mb-1">
+        <h2 class="fw-bold">Monitoramento Inteligente da Qualidade da Água</h2>
+        <p class="lead my-4">Tecnologia e precisão para garantir a pureza da sua água, 24 horas por dia. <br>Veja como é
+          simples ter o controle na palma da sua mão.</p>
+        <a href="#" class="btn btn-light btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#logindiv">Acessar
+          Dashboard</a>
+      </div>
+    </section>
+    <section id="como-funciona" class="py-5">
+      <div class="container text-center">
         <div class="text-center mb-5">
-          <h2 class="fw-bold">Nosso Projeto</h2>
-          <p class="lead">Conheça nosso sistema de Arduino.</p>
+          <h2 class="fw-bold">Simples, Rápido e Eficiente</h2>
+          <p class="lead">Entenda nosso ecossistema em três passos.</p>
         </div>
         <div class="row g-4">
-          <div class="col-md-6 justify">
-            <p>
-              Devido a importância da água para a vida humana, o monitoramento de qualidade da água tem se
-              tornado cada vez mais necessário.
-              Indústrias, hotéis, hospitais, fazendas, condomínios, estações de saneamento básico, entre
-              outros locais que não só utilizam,
-              mas dependem da água para sua subsistência encontram em um sistema de monitoramento de água
-              a segurança que precisam para desempenharem suas atividades.
-            </p>
-            <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
-            <div class="player-ctrl">
-              <!-- Play Button -->
-              <a id="podcast-play" onclick="playShow()"><i class="ion-ios-play"></i></a>
-              <!-- Pause Button -->
-              <a id="podcast-pause" onclick="pauseShow()" style="display:none;"><i class="ion-ios-pause"></i></a>
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="step-card">
+              <div class="step-icon"><i class="fas fa-microchip"></i></div>
+              <h3>1. Coleta de Dados</h3>
+              <p>O nosso dispositivo com ESP32 e sensores de alta precisão lê os parâmetros da água (pH, turbidez, etc.)
+                de forma contínua e automática.</p>
             </div>
-            <!-- Audio player -->
-            <audio id="podcast-audio">
-              <source src="../audio/AD_Devido.mp3" type="audio/mp4">
-            </audio>
           </div>
-          <div class="col-md-6 justify">
-            <p>
-              Nosso sistema para monitoramento de qualidade da água utiliza equipamentos conectados ao
-              Arduino o que permite obter informações e as transmite em tempo real.
-              Para isso, é necessária a utilização de sensores que captam as informações como pH,
-              condutividade, turbidez, entre outros.
-              Todas essas informações podem ser acessadas através do site ou App Mobile
-              da A-Quality.
-            </p>
-            <div class="player-ctrl">
-              <!-- Play Button -->
-              <a id="podcast-play" onclick="playShow()"><i class="ion-ios-play"></i></a>
-              <!-- Pause Button -->
-              <a id="podcast-pause" onclick="pauseShow()" style="display:none;"><i class="ion-ios-pause"></i></a>
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="step-card">
+              <div class="step-icon"><i class="fas fa-wifi"></i></div>
+              <h3>2. Transmissão Segura</h3>
+              <p>Os dados são enviados em tempo real para nossa plataforma na nuvem através da sua rede Wi-Fi, de forma
+                criptografada e segura.</p>
             </div>
-            <!-- Audio player -->
-            <audio id="podcast-audio">
-              <source src="../audio/AD_Nosso.mp3" type="audio/mp4">
-            </audio>
           </div>
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="step-card">
+              <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+              <h3>3. Análise e Alertas</h3>
+              <p>Acesse gráficos, históricos e receba alertas instantâneos no seu dashboard web ou app mobile sempre que
+                um parâmetro estiver fora do ideal.</p>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="../imagens/Capa A-Quality.png" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="../imagens/Capa A-Quality.png" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="../imagens/Capa A-Quality.png" class="d-block w-100">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Próximo</span>
-            </button>
           </div>
         </div>
       </div>
     </section>
-    <section id="Inovacoes" class="py-5 bg-light">
+
+    <section id="NossoProjeto" class="py-5 bg-light">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <img src="../imagens/Capa A-Quality2.png" class="img-fluid rounded shadow-sm"
+              alt="Protótipo do hardware A-Quality">
+          </div>
+          <div class="col-lg-6">
+            <h2 class="fw-bold">Tecnologia a Serviço da Água</h2>
+            <p class="justify">
+              A importância da água para a vida humana exige um monitoramento de qualidade cada vez mais preciso e
+              acessível. Nosso sistema utiliza a plataforma Arduino (ESP32) para coletar informações cruciais como pH,
+              condutividade, turbidez e temperatura, transmitindo-as em tempo real.
+            </p>
+            <p class="justify">
+              Seja em indústrias, condomínios, hospitais ou na agricultura, o A-Quality oferece a segurança e a
+              informação que você precisa para tomar decisões, garantindo a conformidade e a segurança hídrica através
+              de uma plataforma intuitiva e sempre disponível.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Inovacoes" class="py-5">
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="fw-bold">Inovações do Sistema</h2>
-          <p class="lead text-muted">Tecnologia acessível para um monitoramento eficiente.</p>
+          <p class="lead">Componentes de ponta para um monitoramento eficiente.</p>
         </div>
         <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
-            <div class="card text-center h-100">
-              <div class="card-body">
-                <div class="icon-circle mb-3"><i class="fas fa-microchip fa-2x"></i></div>
-                <h4 class="card-title">ESP32</h4>
-                <ul>
-                  <li>Monitoramento em tempo real</li>
-                  <li>Baixo consumo de energia</li>
-                  <li>Integração simplificada</li>
-                </ul>
-              </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="inovacao-card">
+              <div class="card-icon"><i class="fas fa-microchip"></i></div>
+              <h4 class="card-title">ESP32</h4>
+              <p class="card-description">Monitoramento em tempo real com baixo consumo de energia e integração
+                simplificada.</p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="card text-center h-100">
-              <div class="card-body">
-                <div class="icon-circle mb-3"><i class="fas fa-thermometer-half fa-2x"></i></div>
-                <h4 class="card-title">Sensores Utilizados</h4>
-                <ul>
-                  <li><b>pH:</b> Mede a acidez da água</li>
-                  <li><b>Turbidez:</b> Identifica partículas</li>
-                  <li><b>Condutividade:</b> Detecta impurezas</li>
-                  <li><b>Temperatura:</b> Mede variações</li>
-                </ul>
-              </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="inovacao-card">
+              <div class="card-icon"><i class="fas fa-thermometer-half"></i></div>
+              <h4 class="card-title">Sensores Utilizados</h4>
+              <p class="card-description">Medição precisa de pH, Turbidez, Condutividade e Temperatura.</p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="card text-center h-100">
-              <div class="card-body">
-                <div class="icon-circle mb-3"><i class="fas fa-chart-line fa-2x"></i></div>
-                <h4 class="card-title">Dashboard em Tempo Real</h4>
-                <ul>
-                  <li>Visualização remota dos dados</li>
-                  <li>Alertas automáticos</li>
-                  <li>Histórico de medições</li>
-                </ul>
-              </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="inovacao-card">
+              <div class="card-icon"><i class="fas fa-desktop"></i></div>
+              <h4 class="card-title">Dashboard em Tempo Real</h4>
+              <p class="card-description">Visualização remota dos dados, alertas automáticos e histórico de medições.
+              </p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="card text-center h-100">
-              <div class="card-body">
-                <div class="icon-circle mb-3"><i class="fas fa-industry fa-2x"></i></div>
-                <h4 class="card-title">Cenários de Aplicação</h4>
-                <ul>
-                  <li>Reservatórios urbanos</li>
-                  <li>Agricultura e irrigação</li>
-                  <li>Aquicultura e piscicultura</li>
-                  <li>Projetos ambientais</li>
-                </ul>
-              </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="inovacao-card">
+              <div class="card-icon"><i class="fas fa-industry"></i></div>
+              <h4 class="card-title">Cenários de Aplicação</h4>
+              <p class="card-description">Ideal para reservatórios, agricultura, aquicultura e projetos ambientais.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section id="contato">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h2>Entre em Contato</h2>
-          <p>Conheça nossa equipe!</p>
-          <p>Nossas redes sociais:</p>
-          <a href="https://www.instagram.com/aqualityprojeto/" target="_blank">
-            <img src="../imagens/instagram2.png" width="50px">
-          </a>
+
+    <section id="contato" class="py-5 bg-light">
+      <div class="container text-center">
+        <h2 class="fw-bold">Junte-se à Revolução da Água</h2>
+        <p class="lead mb-4">Siga nosso projeto e acompanhe as novidades.</p>
+        <a href="https://www.instagram.com/aqualityprojeto/" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <div class="mt-5">
+          <p><strong>Desenvolvido por:</strong><br>Luiz Fernando Damasceno Maris</p>
         </div>
       </div>
     </section>
   </main>
+
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
 
-    var podcastAudio = document.getElementById('podcast-audio');
+  <script src="js/main.js"></script>
 
-    var playBtn = document.getElementById('podcast-play');
-
-    var pauseBtn = document.getElementById('podcast-pause');
-
-    // Play audio & mostra pause btn
-    var playShow = function () {
-      podcastAudio.play();
-      playBtn.style.display = "none";
-      pauseBtn.style.display = "inline-block";
-    };
-
-    // Pause audio & mostra play btn
-    var pauseShow = function () {
-      podcastAudio.pause();
-      playBtn.style.display = "inline-block";
-      pauseBtn.style.display = "none";
-    };
-    
-    async function enviar() {
-        // 1. Coleta os dados dos campos do formulário de cadastro
-        const nome = document.getElementById('nome').value;
-        const sobrenome = document.getElementById('snome').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-
-        // 2. Cria um objeto com os dados a serem enviados
-        const dadosUsuario = {
-            nome: nome,
-            sobrenome: sobrenome,
-            email: email,
-            senha: senha
-        };
-
-        try {
-            // 3. Faz a requisição POST para a API de registro usando fetch
-            const response = await fetch('api/usuarios/registrar.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dadosUsuario)
-            });
-
-            // 4. Converte a resposta da API para JSON
-            const resultado = await response.json();
-
-            // 5. Trata a resposta
-            if (resultado.status === 'sucesso') {
-                alert(resultado.mensagem);
-                // Fecha o modal de cadastro e abre o de login
-                var modalCadastro = bootstrap.Modal.getInstance(document.getElementById('cadasdiv'));
-                modalCadastro.hide();
-                var modalLogin = new bootstrap.Modal(document.getElementById('logindiv'));
-                modalLogin.show();
-            } else {
-                // Exibe a mensagem de erro retornada pela API
-                alert('Erro: ' + resultado.mensagem);
-            }
-        } catch (error) {
-            console.error('Falha na requisição:', error);
-            alert('Não foi possível se conectar ao servidor. Tente novamente mais tarde.');
-        }
-    }
-
-    /**
-     * Função para ENVIAR os dados de LOGIN para a API.
-     * Chamada pelo botão "Entrar" (RF002).
-     */
-    async function login() {
-        // 1. Coleta os dados dos campos do formulário de login
-        const email = document.getElementById('lemail').value;
-        const senha = document.getElementById('lsenha').value;
-
-        const dadosLogin = {
-            email: email,
-            senha: senha
-        };
-
-        try {
-            // 2. Faz a requisição POST para a API de login
-            const response = await fetch('api/usuarios/login.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dadosLogin)
-            });
-
-            const resultado = await response.json();
-
-            // 3. Trata a resposta
-            if (resultado.status === 'sucesso') {
-                alert(resultado.mensagem);
-                // Redireciona o usuário para o dashboard em caso de sucesso
-                localStorage.setItem('usuario_nome', resultado.dados.nome);
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Erro: ' + resultado.mensagem);
-            }
-        } catch (error) {
-            console.error('Falha na requisição:', error);
-            alert('Não foi possível se conectar ao servidor. Tente novamente mais tarde.');
-        }
-    }
-
-
-    // --- Código original do player de áudio (mantido) ---
-    var podcastAudio = document.getElementById('podcast-audio');
-    var playBtn = document.getElementById('podcast-play');
-    var pauseBtn = document.getElementById('podcast-pause');
-
-    var playShow = function () {
-      podcastAudio.play();
-      playBtn.style.display = "none";
-      pauseBtn.style.display = "inline-block";
-    };
-
-    var pauseShow = function () {
-      podcastAudio.pause();
-      playBtn.style.display = "inline-block";
-      pauseBtn.style.display = "none";
-    };
-  </script>
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+  </div>
 </body>
 
 </html>
