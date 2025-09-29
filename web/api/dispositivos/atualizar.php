@@ -1,11 +1,10 @@
 <?php
-// Ficheiro: web/api/dispositivos/atualizar.php
+// Ficheiro: web/api/dispositivos/atualizar.php (VERSÃO CORRIGIDA)
 require_once __DIR__ . '/../../../config.php';
 session_start();
 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST"); // Usamos POST para atualizações
+header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
 function enviar_resposta($codigo, $status, $mensagem) {
@@ -29,9 +28,13 @@ $dados = json_decode(file_get_contents("php://input"));
 $dispositivo_id = $dados->dispositivo_id ?? null;
 $nome_dispositivo = $dados->nome_dispositivo ?? '';
 $localizacao = $dados->localizacao ?? '';
+$modo_alerta = $dados->modo_alerta ?? 'personalizado'; // Novo campo
 
-if (empty($dispositivo_id) || empty($nome_dispositivo)) {
-    enviar_resposta(400, 'erro', 'O ID e o Nome do Dispositivo são obrigatórios.');
+if (empty($dispositivo_id)) {
+    enviar_resposta(400, 'erro', 'O ID do Dispositivo é obrigatório.');
+}
+if (!in_array($modo_alerta, ['padrão', 'personalizado'])) {
+    enviar_resposta(400, 'erro', 'Modo de alerta inválido.');
 }
 
 // 3. Conectar à base de dados
@@ -40,16 +43,21 @@ if ($conexao->connect_error) {
     enviar_resposta(500, 'erro', 'Falha na conexão com o servidor.');
 }
 
-// 4. Atualizar o dispositivo, garantindo que pertence ao utilizador logado
-$sql = "UPDATE dispositivos SET nome_dispositivo = ?, localizacao = ? WHERE id = ? AND usuario_id = ?";
+// 4. Atualizar o dispositivo
+// A query SQL espera 5 parâmetros no total
+$sql = "UPDATE dispositivos SET nome_dispositivo = ?, localizacao = ?, modo_alerta = ? WHERE id = ? AND usuario_id = ?";
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("ssii", $nome_dispositivo, $localizacao, $dispositivo_id, $usuario_id);
+
+// CORREÇÃO: A linha abaixo estava errada. Agora tem 5 tipos ("sssii") e 5 variáveis.
+$stmt->bind_param("sssii", $nome_dispositivo, $localizacao, $modo_alerta, $dispositivo_id, $usuario_id);
 
 if ($stmt->execute()) {
     if ($stmt->affected_rows > 0) {
         enviar_resposta(200, 'sucesso', 'Dispositivo atualizado com sucesso!');
     } else {
-        enviar_resposta(404, 'erro', 'Dispositivo não encontrado ou não pertence a este utilizador.');
+        // Se nenhuma linha foi afetada, pode ser que o utilizador não mudou nada e clicou em salvar.
+        // Ou o dispositivo não foi encontrado. Enviamos uma mensagem neutra.
+        enviar_resposta(200, 'sucesso', 'Nenhuma alteração detectada ou dispositivo já estava atualizado.');
     }
 } else {
     enviar_resposta(500, 'erro', 'Ocorreu um erro ao atualizar o dispositivo.');

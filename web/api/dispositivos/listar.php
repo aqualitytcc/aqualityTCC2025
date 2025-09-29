@@ -23,13 +23,18 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $usuario_id = $_SESSION['usuario_id'];
+
 $conexao = new mysqli(DB_SERVIDOR, DB_USUARIO, DB_SENHA, DB_BANCO);
 if ($conexao->connect_error) {
     enviar_resposta(500, 'erro', 'Falha na conexão com o servidor.');
 }
 
 // ATUALIZAÇÃO: Adicionado 'nome_dispositivo' à query SELECT
-$sql = "SELECT id, nome_dispositivo, codigo_verificacao, localizacao FROM dispositivos WHERE usuario_id = ?";
+$sql = "SELECT d.*, MAX(l.data_hora) as ultima_leitura 
+        FROM dispositivos d 
+        LEFT JOIN leitura l ON d.id = l.dispositivo_id 
+        WHERE d.usuario_id = ? 
+        GROUP BY d.id";
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
