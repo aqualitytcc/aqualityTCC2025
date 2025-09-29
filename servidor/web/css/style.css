@@ -1,0 +1,266 @@
+:root {
+    --cor-primaria: #0077b6;
+    /* Um azul profissional e moderno */
+    --cor-secundaria: #00b4d8;
+    /* Um azul mais claro para detalhes */
+    --cor-fundo: #f8f9fa;
+    /* Um cinza bem claro para o fundo */
+    --cor-texto: #343a40;
+    /* Texto principal (preto suave) */
+    --cor-branco: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    /* <-- Fonte principal correta */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background: url('../imagens/Capa A-Quality.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2;
+}
+#hero .hero-logo {
+    max-width: 1000px; /* Define o tamanho máximo que o logo pode ter em telas grandes */
+    width: 100%;      /* Garante que o logo encolha e se ajuste em telas menores */
+    height: auto;     /* Mantém a proporção correta da imagem */
+    animation: fadeInUp 1s ease-out;
+}
+#hero h1 {
+    animation: fadeInUp 1s ease-out;
+}
+#hero p {
+    animation: fadeInUp 1s ease-out;
+}
+#hero a {
+    animation: fadeInUp 1s ease-out;
+}
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: transparent !important;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* --- ESTADO 1: NO TOPO DA PÁGINA (SOBRE O HERO) --- */
+
+/* Garante que a marca e os links sejam brancos. Usa a classe .navbar-dark do HTML */
+.navbar:not(.scrolled) .navbar-brand,
+.navbar:not(.scrolled) .nav-link {
+    color: var(--cor-branco) !important;
+}
+
+/* Adiciona uma sombra ao texto para melhor legibilidade sobre a imagem */
+.navbar:not(.scrolled) .navbar-brand,
+.navbar:not(.scrolled) .nav-link,
+.navbar:not(.scrolled) .btn-outline-light {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilo específico para o botão "Cadastro" no topo */
+.navbar:not(.scrolled) .btn.bg-white {
+    color: var(--cor-texto) !important;
+    font-weight: 600;
+}
+
+
+/* --- ESTADO 2: AO ROLAR A PÁGINA (FORA DO HERO) --- */
+
+/* Aplica um fundo branco sólido */
+.navbar.scrolled {
+    position: fixed;
+    background-color: var(--cor-branco) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.navbar.scrolled .btn-outline-light {
+    color: var(--cor-primaria) !important;
+    border-color: var(--cor-primaria) !important;
+    font-weight: 600;
+}
+.navbar.scrolled .btn-outline-light:hover {
+    background-color: var(--cor-primaria) !important;
+    color: var(--cor-branco) !important;
+    border-color: var(--cor-primaria) !important;
+}
+.navbar.scrolled .btn.bg-white {
+    background-color: var(--cor-primaria) !important;
+    color: var(--cor-branco) !important;
+    font-weight: 600;
+}
+/* Muda a cor da marca e dos links para preto */
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: var(--cor-texto) !important;
+    text-shadow: none;
+}
+
+/* Estilos de Texto e Utilitários */
+.justify {
+    text-align: justify;
+}
+
+.registre {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+h1,
+.display-3 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 500;
+    animation: fadeInUp 1s ease-out;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Secção: Como Funciona */
+#como-funciona {
+    background-color: var(--cor-branco);
+}
+
+.step-card {
+    background-color: #f8f9fa;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 119, 182, 0.08);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 1rem;
+}
+
+.step-card p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Secção: Nosso Projeto */
+#NossoProjeto img {
+    max-width: 100%;
+}
+
+/* Secção: Inovações (Cards Customizados) */
+.inovacao-card {
+    background-color: var(--cor-branco);
+    border-radius: 10px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+}
+
+.inovacao-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 119, 182, 0.1);
+    border-color: var(--cor-secundaria);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--cor-secundaria);
+    transition: color 0.3s ease;
+}
+
+.inovacao-card:hover .card-icon {
+    color: var(--cor-primaria);
+}
+
+.inovacao-card .card-title {
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-bottom: 0.75rem;
+}
+
+.inovacao-card .card-description {
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+/* Secção: Contato */
+.social-icon {
+    display: inline-block;
+    font-size: 3rem;
+    color: var(--cor-texto);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #c13584;
+    /* Cor do Instagram */
+    transform: scale(1.1);
+}
+
+/* Animação de Scroll */
+.section-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+}
+
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

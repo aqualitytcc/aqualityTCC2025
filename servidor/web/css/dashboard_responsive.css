@@ -1,0 +1,174 @@
+/* Ficheiro: css/dashboard_responsive.css */
+:root {
+    --main-bg-color: #f8f9fa;
+    --main-text-color: #212529;
+    --primary-text-color: #1e3a8a; /* Cor principal para ícones e títulos */
+    --sidebar-bg: #FFFFFF;
+    --sidebar-link-color: #555555;
+    --sidebar-active-link-color: #1e3a8a;
+    --sidebar-border-color: #dddddd;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+#wrapper {
+    display: flex;
+}
+
+/* --- Sidebar Styles --- */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 280px;
+    margin-left: -280px;
+    transition: margin 0.25s ease-out;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border-color);
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 280px;
+}
+
+#sidebar-wrapper .list-group-item {
+    border: 0;
+    color: var(--sidebar-link-color);
+    font-weight: bold;
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: transparent;
+    color: var(--sidebar-active-link-color);
+    border-left: 4px solid var(--sidebar-active-link-color);
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #f0f0f0;
+    color: var(--sidebar-active-link-color);
+}
+
+/* --- Page Content --- */
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+#menu-toggle {
+    cursor: pointer;
+}
+
+/* --- Responsive Styles --- */
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -280px;
+    }
+}
+
+/* --- Outros Estilos do seu dashboard.css antigo (adaptados) --- */
+.primary-text {
+    color: var(--primary-text-color);
+}
+
+.fab-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-text-color);
+    color: white;
+    font-size: 24px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.device-card {
+    border-left-width: 5px;
+    transition: all 0.2s ease-in-out;
+    border-left-color: #6c757d; /* Cor padrão para offline */
+}
+
+.device-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+/* ========================================= */
+/* --- ESTILOS PARA O MODO ESCURO (DARK MODE) --- */
+/* ========================================= */
+
+body.dark-mode {
+    /* Primeiramente, redefinimos as variáveis de cor para o tema escuro */
+    --main-bg-color: #121212; /* Fundo principal escuro */
+    --main-text-color: #e0e0e0; /* Texto principal claro */
+    --primary-text-color: #4dabf7; /* Um azul mais vibrante para o escuro */
+    --sidebar-bg: #1e1e1e; /* Fundo da sidebar um pouco mais claro */
+    --sidebar-link-color: #a0a0a0; /* Cor dos links da sidebar */
+    --sidebar-active-link-color: #4dabf7; /* Cor do link ativo */
+    --sidebar-border-color: #333333; /* Cor da borda */
+}
+
+/* Agora, ajustamos componentes específicos que usam cores fixas (como bg-white) */
+body.dark-mode .bg-white {
+    background-color: var(--sidebar-bg) !important; /* Força os cartões a usar o fundo escuro */
+}
+
+body.dark-mode .card {
+     border-color: var(--sidebar-border-color);
+}
+
+body.dark-mode .list-group-item:hover {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: var(--sidebar-bg);
+    border-color: var(--sidebar-border-color);
+}
+
+body.dark-mode .dropdown-item {
+    color: var(--sidebar-link-color);
+}
+
+body.dark-mode .dropdown-item:hover {
+    color: var(--main-text-color);
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .modal-content {
+    background-color: var(--sidebar-bg);
+    color: var(--main-text-color);
+    border-color: var(--sidebar-border-color);
+}
+
+body.dark-mode .btn-close {
+    filter: invert(1);
+}
+/* Adicione esta regra para corrigir a cor do texto do utilizador no menu */
+body.dark-mode .second-text {
+    color: var(--main-text-color) !important;
+}
