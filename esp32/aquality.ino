@@ -93,8 +93,9 @@ void loop() {
 
   // --- 2. LEITURA DE CONDUTIVIDADE ---
   int analogValue = analogRead(TDS_PIN);
-  float voltage_cond = analogValue * (supplyVoltage / 4095.0); 
-  tdsValue = (133.42 * voltage_cond * voltage_cond * voltage_cond - 255.86 * voltage_cond * voltage_cond + 857.39 * voltage_cond) * tdsCalibrationConstant;
+  float voltage_cond = analogValue * (supplyVoltage / 4095.0);
+  tdsValue = (voltage_cond / tdsCalibrationConstant) * 1000;
+  //tdsValue = (133.42 * voltage_cond * voltage_cond * voltage_cond - 255.86 * voltage_cond * voltage_cond + 857.39 * voltage_cond) * tdsCalibrationConstant;
 
   // --- 3. LEITURA DE TURBIDEZ ---
   voltagem_turbidez = 0;
