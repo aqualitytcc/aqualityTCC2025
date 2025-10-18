@@ -12,9 +12,9 @@ define('DB_SERVIDOR', '');
 define('DB_USUARIO', '');
 define('DB_SENHA', '');
 define('DB_BANCO', '');
+define('GEMINI_API_KEY', '');
 
 // Configura o PHP para não exibir erros detalhados em produção (melhor para segurança)
 // Em fase de desenvolvimento, você pode comentar a linha abaixo para ver os erros.
 //ini_set('display_errors', 0);
-
 //error_reporting(0);
