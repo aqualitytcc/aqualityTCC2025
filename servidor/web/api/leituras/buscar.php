@@ -1,22 +1,20 @@
 <?php
-// Ficheiro: web/api/leituras/buscar.php (VERSÃO CORRIGIDA E MELHORADA)
+// Ficheiro: web/api/leituras/buscar.php (VERSÃO ATUALIZADA)
 require_once __DIR__ . '/../../../config.php';
 session_start();
 
 header("Content-Type: application/json; charset=UTF-8");
 
-// Reintroduzindo a função padrão para consistência
 function enviar_resposta($codigo, $status, $mensagem, $dados = null) {
     http_response_code($codigo);
     $resposta = ['status' => $status, 'mensagem' => $mensagem];
-    if (isset($dados)) { // Usar isset para permitir arrays vazios
+    if (isset($dados)) {
         $resposta['dados'] = $dados;
     }
     echo json_encode($resposta);
     exit;
 }
 
-// Função auxiliar para validar o formato da data
 function validar_data($data) {
     $d = DateTime::createFromFormat('Y-m-d', $data);
     return $d && $d->format('Y-m-d') === $data;
@@ -28,21 +26,21 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $usuario_id = $_SESSION['usuario_id'];
 
-// 1. Validar o ID do dispositivo
 $dispositivo_id = filter_input(INPUT_GET, 'dispositivo_id', FILTER_VALIDATE_INT);
 if (!$dispositivo_id) {
     enviar_resposta(400, 'erro', 'O ID do dispositivo é obrigatório e deve ser um número.');
 }
 
-// 2. Obter e validar as datas (opcionais)
+// Novos parâmetros opcionais
 $data_inicio = $_GET['data_inicio'] ?? null;
 $data_fim = $_GET['data_fim'] ?? null;
+$limite = filter_input(INPUT_GET, 'limite', FILTER_VALIDATE_INT);
 
 if ($data_inicio && !validar_data($data_inicio)) {
-    enviar_resposta(400, 'erro', 'O formato da data de início é inválido. Use AAAA-MM-DD.');
+    enviar_resposta(400, 'erro', 'O formato da data de início é inválido. Use DD-MM-AAAA.');
 }
 if ($data_fim && !validar_data($data_fim)) {
-    enviar_resposta(400, 'erro', 'O formato da data de fim é inválido. Use AAAA-MM-DD.');
+    enviar_resposta(400, 'erro', 'O formato da data de fim é inválido. Use DD-MM-AAAA');
 }
 
 $conexao = new mysqli(DB_SERVIDOR, DB_USUARIO, DB_SENHA, DB_BANCO);
@@ -50,7 +48,6 @@ if ($conexao->connect_error) {
     enviar_resposta(500, 'erro', 'Falha na conexão com o servidor.');
 }
 
-// 3. Montar a query SQL com a CORREÇÃO DE SEGURANÇA (JOIN com dispositivos)
 $sql = "SELECT l.data_hora, l.temperatura, l.ph, l.turbidez, l.condutividade 
         FROM leitura l
         JOIN dispositivos d ON l.dispositivo_id = d.id
@@ -71,7 +68,16 @@ if ($data_fim) {
     $types .= "s";
 }
 
-$sql .= " ORDER BY l.data_hora ASC";
+// Lógica de Ordenação e Limite
+if ($limite) {
+    $sql .= " ORDER BY l.data_hora DESC LIMIT ?"; // Pega os mais recentes
+    $params[] = $limite;
+    $types .= "i";
+} else {
+    $sql .= " ORDER BY l.data_hora ASC"; // Mantém a ordem cronológica para filtros de data
+}
+
+
 
 $stmt = $conexao->prepare($sql);
 if (!$stmt) {
@@ -87,7 +93,12 @@ while ($linha = $resultado->fetch_assoc()) {
     $leituras[] = $linha;
 }
 
-// Resposta final no formato padronizado
+// Se usamos o limite, os resultados vêm em ordem decrescente (do mais novo para o mais antigo).
+// Invertemos o array para que o gráfico seja exibido na ordem cronológica correta (do mais antigo para o mais novo).
+if ($limite) {
+    $leituras = array_reverse($leituras);
+}
+
 enviar_resposta(200, 'sucesso', 'Leituras obtidas com sucesso.', $leituras);
 
 $stmt->close();

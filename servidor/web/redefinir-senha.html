@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Quality - Redefinir Senha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow" style="max-width: 500px; width: 100%;">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <img src="imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" alt="Logo A-Quality" style="height: 80px;">
+                    <h2 class="card-title mt-3">Crie uma Nova Senha</h2>
+                </div>
+                
+                <div id="form-container">
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Nova Senha</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="Pelo menos 6 caracteres">
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary" onclick="redefinirSenha()">Salvar Nova Senha</button>
+                    </div>
+                </div>
+
+                <div id="status-message" class="text-center" style="display: none;">
+                    </div>
+
+                <div class="text-center mt-3">
+                    <a href="index.html" id="loginButton" style="display: none;">Ir para Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const formContainer = document.getElementById('form-container');
+        const statusMessage = document.getElementById('status-message');
+        const loginButton = document.getElementById('loginButton');
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+
+        // Se não houver token no URL, mostra um erro imediatamente.
+        if (!token) {
+            formContainer.style.display = 'none';
+            statusMessage.style.display = 'block';
+            statusMessage.innerHTML = '<p class="text-danger fw-bold">Erro: Token de redefinição inválido. O link pode estar quebrado.</p>';
+            loginButton.style.display = 'inline-block';
+        }
+
+        async function redefinirSenha() {
+            const nova_senha = document.getElementById('newPassword').value;
+
+            if (nova_senha.length < 6) {
+                alert('A nova senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+
+            try {
+                const response = await fetch('api/usuarios/executar_redefinicao.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: token, nova_senha: nova_senha })
+                });
+
+                const resultado = await response.json();
+                
+                formContainer.style.display = 'none';
+                statusMessage.style.display = 'block';
+                loginButton.style.display = 'inline-block';
+
+                if (resultado.status === 'sucesso') {
+                    statusMessage.innerHTML = `<p class="text-success fw-bold">${resultado.mensagem}</p>`;
+                } else {
+                    statusMessage.innerHTML = `<p class="text-danger fw-bold">Erro: ${resultado.mensagem}</p>`;
+                }
+            } catch (error) {
+                statusMessage.innerHTML = '<p class="text-danger fw-bold">Falha na comunicação com o servidor. Tente novamente mais tarde.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

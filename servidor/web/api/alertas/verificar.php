@@ -90,12 +90,12 @@ foreach ($dispositivos as $dispositivo_id => $dispositivo) {
     // --- VERIFICAÇÃO PARA MODO 'PADRÃO' ---
     if ($dispositivo['modo_alerta'] === 'padrão') {
         // Regra pH
-        if (isset($leitura['ph']) && ($leitura['ph'] < 6.0 || $leitura['ph'] > 9.5)) {
-            $notificacoes[] = "Alerta Padrão em '$nome_dispositivo': pH (".$leitura['ph'].") fora do limite (6.0 - 9.5).";
+        if (isset($leitura['ph']) && ($leitura['ph'] < 6.5 || $leitura['ph'] > 9.5)) {
+            $notificacoes[] = "Alerta Padrão em '$nome_dispositivo': pH (".$leitura['ph'].") fora do limite (6.5 - 9.5).";
         }
         // Regra Turbidez
-        if (isset($leitura['turbidez']) && $leitura['turbidez'] > 15.0) {
-            $notificacoes[] = "Alerta Padrão em '$nome_dispositivo': Turbidez (".$leitura['turbidez']."%) acima do limite (15.0 %).";
+        if (isset($leitura['turbidez']) && $leitura['turbidez'] > 2.0) {
+            $notificacoes[] = "Alerta Padrão em '$nome_dispositivo': Turbidez (".$leitura['turbidez']."%) acima do limite (2.0 %).";
         }
         // Regra Condutividade
         if (isset($leitura['condutividade']) && $leitura['condutividade'] > 250.0) {
@@ -117,7 +117,7 @@ foreach ($dispositivos as $dispositivo_id => $dispositivo) {
                     if ($violada) {
                         $notificacoes[] = sprintf(
                             "Alerta em '%s': %s (%.2f) está fora do limite de %s %.2f.",
-                            $nome_dispositivo, ucfirst($parametro), $valor_leitura, str_replace('_', ' ', $regra['condicao']), $regra['valor']
+                            $nome_dispositivo, $parametro, $valor_leitura, str_replace('_', ' ', $regra['condicao']), $regra['valor']
                         );
                     }
                 }

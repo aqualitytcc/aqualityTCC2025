@@ -48,6 +48,7 @@ body * {
     max-width: 1000px; /* Define o tamanho máximo que o logo pode ter em telas grandes */
     width: 100%;      /* Garante que o logo encolha e se ajuste em telas menores */
     height: auto;     /* Mantém a proporção correta da imagem */
+    aspect-ratio: 1400 / 400; /* Mantém a proporção original do logo */
     animation: fadeInUp 1s ease-out;
 }
 #hero h1 {
@@ -187,6 +188,7 @@ p {
 /* Secção: Nosso Projeto */
 #NossoProjeto img {
     max-width: 100%;
+    aspect-ratio: 1920 / 1080;
 }
 
 /* Secção: Inovações (Cards Customizados) */

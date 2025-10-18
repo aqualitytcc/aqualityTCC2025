@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" as="image" href="../imagens/Capa A-Quality.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,8 +37,12 @@
             <input type="button" style="width: 100%; height: 50px;" onclick="login()" class="btn btn-primary"
               value="Entrar">
           </div>
-          <label class="registre">Não tem uma conta?</label>
-          <a class="registre" data-bs-toggle="modal" data-bs-target="#cadasdiv">Registre-se aqui</a>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="registre">Não tem uma conta? <a href="#" data-bs-toggle="modal"
+                data-bs-target="#cadasdiv">Registre-se aqui</a></span>
+            <a href="#" class="registre" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Esqueci a minha
+              senha</a>
+          </div>
         </div>
       </div>
     </div>
@@ -71,10 +76,30 @@
       </div>
     </div>
   </div>
+  <div id="forgotPasswordModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="padding: 70px 30px;">
+          <h2 class="text-center" style="margin-bottom: 40px;">Redefinir Senha</h2>
+          <p class="text-center text-muted mb-4">Insira o seu email e enviaremos as instruções para criar uma nova
+            senha.</p>
+          <div class="mb-3">
+            <label class="form-label">Email</label><br>
+            <input type="email" class="form-control" id="forgotEmail" placeholder="seu-email@exemplo.com">
+          </div>
+          <div class="mb-3">
+            <input type="button" style="width: 100%; height: 50px;" onclick="pedirRedefinicaoSenha()"
+              class="btn btn-primary" value="Enviar Instruções">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">
-        <img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px;">
+        <img src="../imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" style="height: 60px; width: 60px;" width="500"
+          height="500" alt="Logotipo A-Quality">
         <span style="font-weight: 650;">A-Quality</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -108,7 +133,8 @@
   <main>
     <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white">
       <div class="container">
-        <img src="../imagens/logo-hero.png" alt="Logotipo A-Quality" class="hero-logo mb-1">
+        <img src="../imagens/logo-hero.png" fetchpriority="high" alt="Logotipo A-Quality" width="1400" height="400"
+          class="hero-logo mb-1">
         <h2 class="fw-bold">Monitoramento Inteligente da Qualidade da Água</h2>
         <p class="lead my-4">Tecnologia e precisão para garantir a pureza da sua água, 24 horas por dia. <br>Veja como é
           simples ter o controle na palma da sua mão.</p>
@@ -155,7 +181,7 @@
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
-            <img src="../imagens/Capa A-Quality2.png" class="img-fluid rounded shadow-sm"
+            <img src="../imagens/Capa A-Quality2.png" width="1920" height="1080" class="img-fluid rounded shadow-sm"
               alt="Protótipo do hardware A-Quality">
           </div>
           <div class="col-lg-6">

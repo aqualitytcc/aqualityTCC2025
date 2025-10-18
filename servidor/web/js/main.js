@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Função para REGISTAR um novo utilizador na API.
+ * Função para REGISTRAR um novo utilizador na API.
  */
 async function enviar() {
     const nome = document.getElementById('nome').value;
@@ -111,7 +111,7 @@ async function login() {
         if (resultado.status === 'sucesso') {
             showToast(resultado.mensagem, 'success');
             localStorage.setItem('usuario_nome', resultado.dados.nome);
-            window.location.href = 'dashboard.html';
+            window.location.href = 'painel.html';
         } else {
             showToast(resultado.mensagem, 'error');
         }
@@ -148,4 +148,40 @@ function showToast(message, type = 'success') {
     const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
     toastElement.addEventListener('hidden.bs.toast', () => toastElement.remove());
     toast.show();
+}
+/**
+ * Função para enviar o pedido de redefinição de senha para a API.
+ */
+async function pedirRedefinicaoSenha() {
+    const email = document.getElementById('forgotEmail').value;
+
+    if (!email) {
+        showToast('Por favor, insira o seu endereço de email.', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch('api/usuarios/pedir_redefinicao.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email})
+        });
+        
+        const resultado = await response.json();
+
+        // Independentemente do resultado (sucesso ou erro de "utilizador não encontrado"),
+        // mostramos sempre a mesma mensagem de sucesso por razões de segurança.
+        // A API só devolverá um erro real se o email for inválido ou se a conta não estiver ativa.
+        if (resultado.status === 'sucesso') {
+            showToast(resultado.mensagem, 'success');
+            // Esconde o modal de "esqueci a senha"
+            bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal')).hide();
+        } else {
+            showToast(resultado.mensagem, 'error');
+        }
+
+    } catch (error) {
+        console.error('Falha na requisição de redefinição:', error);
+        showToast('Não foi possível conectar-se ao servidor.', 'error');
+    }
 }

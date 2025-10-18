@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Quality - Verificação de Email</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card text-center shadow" style="max-width: 500px;">
+            <div class="card-body p-5">
+                <img src="imagens/Cópia_de_Logo_Aquality_Sem_Fundo.png" alt="Logo A-Quality" style="height: 80px;" class="mb-4">
+                <h2 class="card-title">Verificando o seu Email...</h2>
+                <div id="status-message">
+                    <div class="spinner-border text-primary my-3" role="status">
+                        <span class="visually-hidden">Aguarde...</span>
+                    </div>
+                    <p class="text-muted">Estamos a validar a sua conta. Por favor, aguarde um momento.</p>
+                </div>
+                <a href="index.html" class="btn btn-primary mt-3" style="display: none;" id="loginButton">Ir para Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const statusMessage = document.getElementById('status-message');
+            const loginButton = document.getElementById('loginButton');
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token) {
+                statusMessage.innerHTML = '<p class="text-danger fw-bold">Erro: Token de verificação não encontrado. O link pode estar incorreto.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('api/usuarios/confirmar_email.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: token })
+                });
+                
+                const resultado = await response.json();
+
+                if (resultado.status === 'sucesso') {
+                    statusMessage.innerHTML = `<p class="text-success fw-bold">${resultado.mensagem}</p>`;
+                    loginButton.style.display = 'inline-block';
+                } else {
+                    statusMessage.innerHTML = `<p class="text-danger fw-bold">Erro: ${resultado.mensagem}</p>`;
+                    loginButton.style.display = 'inline-block';
+                }
+            } catch (error) {
+                statusMessage.innerHTML = '<p class="text-danger fw-bold">Falha na comunicação com o servidor. Tente novamente mais tarde.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

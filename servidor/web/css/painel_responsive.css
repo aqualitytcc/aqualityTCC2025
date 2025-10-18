@@ -1,0 +1,582 @@
+/* =================================================================== */
+/* === FICHEIRO: css/painel_responsive.css (VERSÃO ORGANIZADA) === */
+/* =================================================================== */
+
+/* ---------------------------------------- */
+/* -- 1. VARIÁVEIS GLOBAIS E ESTILOS BASE -- */
+/* ---------------------------------------- */
+:root {
+    --cor-primaria: #0077b6;
+    --cor-secundaria: #00b4d8;
+    --cor-fundo: #f8f9fa;
+    --cor-texto: #343a40;
+    --cor-branco: #FFFFFF;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Poppins', sans-serif;
+}
+
+#wrapper {
+    display: flex;
+}
+
+.primary-text {
+    color: var(--cor-primaria);
+}
+
+/* ---------------------------------------- */
+/* -------- 2. LAYOUT PRINCIPAL E SIDEBAR -------- */
+/* ---------------------------------------- */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 280px;
+    margin-left: -280px;
+    transition: margin 0.25s ease-out;
+    background-color: var(--cor-branco);
+    border-right: 1px solid transparent;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 280px;
+}
+
+#sidebar-wrapper .list-group-item {
+    border: 0;
+    color: #555555;
+    font-weight: bold;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #f0f0f0;
+    color: var(--cor-primaria);
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: transparent;
+    color: var(--cor-primaria);
+    border-left: 4px solid var(--cor-primaria);
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+#menu-toggle {
+    cursor: pointer;
+}
+
+/* --- Estilos Responsivos da Sidebar --- */
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -280px;
+    }
+}
+
+/* ---------------------------------------- */
+/* --------- 3. COMPONENTES PERSONALIZADOS -------- */
+/* ---------------------------------------- */
+
+/* --- Cartões de Resumo (Home) --- */
+.summary-card {
+    background-color: var(--cor-branco);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+}
+
+.summary-card-info h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--cor-texto);
+}
+
+.summary-card-info p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+.summary-card-icon {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    background-color: rgba(0, 119, 182, 0.1);
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-card-icon.online {
+    color: #198754;
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.summary-card-icon.alert {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* --- Cartões de Conteúdo (Gráficos, etc.) --- */
+.content-card {
+    background-color: var(--cor-branco);
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.content-card .card-body {
+    padding: 1.5rem;
+}
+
+.content-card .card-title {
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Cartões de Dispositivo --- */
+.device-card {
+    display: flex;
+    flex-direction: column;
+    border-left-width: 5px;
+    border-left-color: #6c757d;
+    /* Cor padrão para offline */
+}
+
+.device-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 119, 182, 0.08);
+}
+
+.device-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.device-card .card-body hr {
+    margin-top: auto;
+}
+
+.device-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: flex-end;
+}
+
+/* --- Itens do Painel de Status Rápido --- */
+.quick-status-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--cor-fundo);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.quick-status-item:hover {
+    transform: scale(1.03);
+    border-color: var(--cor-primaria);
+}
+
+.quick-status-item .icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    width: 30px;
+    text-align: center;
+}
+
+.quick-status-item .info .label {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.quick-status-item .info .value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.quick-status-item .info .value.in-alert {
+    color: #dc3545;
+}
+
+/* --- Botões Personalizados --- */
+.btn-custom {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 550;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-custom-primary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+.btn-custom-primary:hover {
+    background-color: #005f8a;
+    color: var(--cor-branco);
+}
+
+.btn-custom-secondary {
+    background-color: #6c757d;
+    color: var(--cor-branco);
+}
+
+.btn-custom-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-custom-success {
+    background-color: #198754;
+    color: var(--cor-branco);
+}
+
+.btn-custom-success:hover {
+    background-color: #157347;
+}
+
+.btn-custom-danger {
+    background-color: #dc3545;
+    color: var(--cor-branco);
+}
+
+.btn-custom-danger:hover {
+    background-color: #bb2d3b;
+}
+
+/* --- Botões Flutuantes (FAB) --- */
+.fab-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--cor-primaria);
+    color: white;
+    font-size: 24px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Chat de IA --- */
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chat-message.bot {
+    background-color: #e9ecef;
+    color: #212529;
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    background-color: var(--cor-primaria);
+    color: white;
+    align-self: flex-end;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: #999;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-of-type(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-of-type(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1.0);
+    }
+}
+
+/* --- Formulários Personalizados --- */
+.form-control,
+.form-select {
+    background-color: var(--cor-fundo);
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-branco);
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+    outline: none;
+}
+
+/* Cor do placeholder para o modo claro (um cinza suave) */
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+    /* Garante que a cor seja aplicada em alguns navegadores */
+}
+/* --- Tabela Personalizada --- */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+    font-size: 0.9rem;
+}
+
+/* Estilo para o cabeçalho da tabela (Nível, Data, etc.) */
+.table-custom thead th {
+    background-color: var(--cor-fundo);
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Estilo para as células do corpo da tabela */
+.table-custom tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    color: var(--cor-texto);
+    vertical-align: middle; /* Alinha o conteúdo verticalmente ao centro */
+}
+
+/* Remove a borda da última linha para um look mais limpo */
+.table-custom tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efeito de "hover" nas linhas */
+.table-custom tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* ---------------------------------------- */
+/* -------------- 4. MODO ESCURO -------------- */
+/* ---------------------------------------- */
+body.dark-mode {
+    --cor-fundo: #121212;
+    --cor-texto: #e0e0e0;
+    --cor-branco: #1e1e1e;
+    --texto-botao: #ffffff;
+    /* Cor para os cartões e fundos "brancos" */
+}
+
+/* Estilos Gerais do Modo Escuro */
+body.dark-mode .bg-white {
+    background-color: var(--cor-branco) !important;
+}
+
+body.dark-mode .second-text {
+    color: var(--cor-texto) !important;
+}
+
+body.dark-mode .btn-close {
+    filter: invert(1);
+}
+
+/* Sidebar no Modo Escuro */
+body.dark-mode #sidebar-wrapper .list-group-item {
+    color: #a0a0a0;
+}
+
+body.dark-mode #sidebar-wrapper .list-group-item:hover {
+    background-color: #2c2c2c;
+}
+
+/* Dropdown no Modo Escuro */
+body.dark-mode .dropdown-menu {
+    background-color: var(--cor-branco);
+    border-color: #333333;
+}
+
+body.dark-mode .dropdown-item {
+    color: #a0a0a0;
+}
+
+body.dark-mode .dropdown-item:hover {
+    color: var(--cor-texto);
+    background-color: #2c2c2c;
+}
+
+/* Modais no Modo Escuro */
+body.dark-mode .modal-content {
+    background-color: var(--cor-branco);
+    color: var(--cor-texto);
+    border-color: #333333;
+}
+
+/* Componentes Personalizados no Modo Escuro */
+body.dark-mode .summary-card {
+    border-color: #333;
+}
+
+body.dark-mode .summary-card-info p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .summary-card-icon {
+    background-color: #2c3e50;
+}
+
+body.dark-mode .summary-card-icon.online {
+    background-color: rgba(25, 135, 84, 0.2);
+}
+
+body.dark-mode .summary-card-icon.alert {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+body.dark-mode .content-card {
+    border-color: #333;
+}
+
+body.dark-mode .device-card {
+    border-left-color: #555;
+}
+
+body.dark-mode .device-card .card-subtitle {
+    color: #a0a0a0 !important;
+}
+
+body.dark-mode .text-muted {
+    color: #a0a0a0 !important;
+}
+
+/* CORREÇÃO FINAL: Regra mais específica para os botões dentro dos cartões de dispositivo */
+body.dark-mode .btn-custom {
+    color: var(--texto-botao);
+}
+
+body.dark-mode .quick-status-item {
+    background-color: #2a2a2a;
+    border-color: #333;
+}
+
+body.dark-mode .quick-status-item:hover {
+    border-color: var(--cor-primaria);
+}
+
+body.dark-mode .quick-status-item .info .label {
+    color: #a0a0a0;
+}
+
+body.dark-mode .chat-message.bot {
+    background-color: #3a3b3c;
+    color: var(--cor-texto);
+}
+
+/* Adaptação para o Modo Escuro */
+body.dark-mode .table-custom thead th {
+    background-color: #2a2a2a;
+    color: #a0a0a0;
+    border-bottom-color: #444;
+}
+body.dark-mode .table-responsive {
+    background-color: var(--cor-branco);
+}
+body.dark-mode .table-custom tbody td {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .table-custom tbody tr:hover {
+    background-color: #2c2c2c;
+}
+
+/* Estilos para as cores das linhas de alerta (warning, critical, etc.) */
+body.dark-mode .table-info { background-color: rgba(23, 162, 184, 0.15) !important; }
+body.dark-mode .table-warning { background-color: rgba(255, 193, 7, 0.15) !important; }
+body.dark-mode .table-danger { background-color: rgba(220, 53, 69, 0.15) !important; }
+
+/* Cor do placeholder para o MODO ESCURO (um cinza mais claro e legível) */
+body.dark-mode .form-control::placeholder {
+    color: #8a8a8a;
+    opacity: 1;
+}
+
+/* Adaptação para o Modo Escuro */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #2a2a2a;
+    color: var(--cor-texto);
+    border-color: #444;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: #3a3b3c;
+    border-color: var(--cor-primaria);
+}

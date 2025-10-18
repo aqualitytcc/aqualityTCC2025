@@ -1,29 +1,9 @@
 <?php
-// Arquivo: servidor/web/api/usuarios/login.php
-// Requisito Funcional: RF002 - O sistema deve permitir o login de usuários autenticados com e-mail e senha.
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+// Ficheiro: servidor/web/api/usuarios/login.php (VERSÃO FINAL COM VERIFICAÇÃO)
 
 require_once __DIR__ . '/../../../config.php';
-
-// Inicia a sessão PHP. Essencial para manter o usuário logado entre as páginas.
+require_once __DIR__ . '/../api_handler.php';
 session_start();
-
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-function enviar_resposta($codigo_http, $status, $mensagem, $dados = null) {
-    http_response_code($codigo_http);
-    $resposta = ['status' => $status, 'mensagem' => $mensagem];
-    if ($dados) {
-        $resposta['dados'] = $dados;
-    }
-    echo json_encode($resposta);
-    exit;
-}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     enviar_resposta(405, 'erro', 'Método não permitido.');
@@ -42,8 +22,8 @@ if (empty($email) || empty($senha)) {
     enviar_resposta(400, 'erro', 'Email e senha são obrigatórios.');
 }
 
-// Busca o usuário pelo e-mail para obter o hash da senha.
-$sql = "SELECT id, nome, sobrenome, senha FROM usuario WHERE email = ? LIMIT 1";
+// ATUALIZAÇÃO: Busca também o campo 'email_verificado_em'
+$sql = "SELECT id, nome, sobrenome, senha, email_verificado_em FROM usuario WHERE email = ? LIMIT 1";
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -52,22 +32,24 @@ $resultado = $stmt->get_result();
 if ($resultado->num_rows === 1) {
     $usuario = $resultado->fetch_assoc();
     
-    // **SEGURANÇA: Verifica a senha enviada com o hash salvo no banco.**
     if (password_verify($senha, $usuario['senha'])) {
-        // Senha correta! Armazena os dados na sessão.
+        // NOVA VERIFICAÇÃO: Verifica se o email foi confirmado
+        if ($usuario['email_verificado_em'] === null) {
+            enviar_resposta(403, 'erro', 'A sua conta ainda não foi ativada. Por favor, verifique o email de confirmação que lhe enviámos.');
+        }
+        
+        // Se a senha estiver correta E o email verificado, inicia a sessão
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['usuario_nome'] = $usuario['nome'];
         
-        // Remove a senha do array antes de enviar a resposta.
         unset($usuario['senha']);
+        unset($usuario['email_verificado_em']);
 
         enviar_resposta(200, 'sucesso', 'Login realizado com sucesso!', $usuario);
     } else {
-        // Senha incorreta.
         enviar_resposta(401, 'erro', 'Credenciais inválidas.');
     }
 } else {
-    // Usuário não encontrado.
     enviar_resposta(401, 'erro', 'Credenciais inválidas.');
 }
 
