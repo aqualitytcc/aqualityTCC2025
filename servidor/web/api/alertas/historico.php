@@ -1,10 +1,6 @@
 <?php
 // Ficheiro: servidor/web/api/alertas/historico.php (VERSÃO FINAL CORRIGIDA)
 
-// Força a exibição de todos os erros do PHP
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 require_once __DIR__ . '/../../../config.php';
 session_start();
 

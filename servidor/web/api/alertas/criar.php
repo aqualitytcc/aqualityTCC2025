@@ -6,6 +6,7 @@ session_start();
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 
+// Função para enviar respostas JSON
 function enviar_resposta($codigo, $status, $mensagem) {
     http_response_code($codigo);
     echo json_encode(['status' => $status, 'mensagem' => $mensagem]);
@@ -19,7 +20,7 @@ if (!isset($_SESSION['usuario_id'])) {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     enviar_resposta(405, 'erro', 'Método não permitido.');
 }
-
+// Obtém os dados do pedido
 $usuario_id = $_SESSION['usuario_id'];
 $dados = json_decode(file_get_contents("php://input"));
 
@@ -27,11 +28,11 @@ $dispositivo_id = $dados->dispositivo_id ?? null;
 $parametro = $dados->parametro ?? '';
 $condicao = $dados->condicao ?? '';
 $valor = $dados->valor ?? null;
-
+// Validação básica dos dados
 if (empty($dispositivo_id) || empty($parametro) || empty($condicao) || !is_numeric($valor)) {
     enviar_resposta(400, 'erro', 'Todos os campos são obrigatórios e o valor deve ser numérico.');
 }
-
+// Conexão à base de dados
 $conexao = new mysqli(DB_SERVIDOR, DB_USUARIO, DB_SENHA, DB_BANCO);
 if ($conexao->connect_error) {
     enviar_resposta(500, 'erro', 'Falha na conexão com o servidor.');
