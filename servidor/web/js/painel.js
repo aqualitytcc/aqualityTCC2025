@@ -110,19 +110,6 @@ function setupEventListeners() {
             }
         });
     }
-    const chatSendBtn = document.getElementById('ai-chat-send-btn');
-    const chatInput = document.getElementById('ai-chat-input');
-
-    if (chatSendBtn) {
-        chatSendBtn.addEventListener('click', enviarPerguntaParaIA);
-    }
-    if (chatInput) {
-        chatInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                enviarPerguntaParaIA();
-            }
-        });
-    }
 }
 
 async function fetchDevices() {
@@ -1032,97 +1019,4 @@ function showSection(sectionId, element) {
     if (sectionId === 'historico-alertas-section') {
         mostrarHistoricoAlertas();
     }
-}
-/**
- * Adiciona uma mensagem (do user ou do bot) à janela de chat.
- * @param {string} texto O texto da mensagem.
- * @param {string} tipo 'user' ou 'bot'.
- */
-function adicionarMensagemAoChat(texto, tipo) {
-    const chatBody = document.getElementById('ai-chat-body');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${tipo}`;
-    messageDiv.textContent = texto;
-    chatBody.appendChild(messageDiv);
-
-    // Rola para a mensagem mais recente
-    chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-/**
- * Mostra ou esconde o indicador "a digitar...".
- * @param {boolean} mostrar True para mostrar, false para esconder.
- */
-function mostrarIndicadorDigitando(mostrar) {
-    const chatBody = document.getElementById('ai-chat-body');
-    let typingIndicator = document.getElementById('typing-indicator');
-
-    if (mostrar) {
-        if (!typingIndicator) { // Só adiciona se não existir
-            const indicatorHTML = `
-                <div class="chat-message bot" id="typing-indicator">
-                    <div class="typing-indicator">
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-            `;
-            chatBody.insertAdjacentHTML('beforeend', indicatorHTML);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-    } else {
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
-    }
-}
-
-/**
- * Pega no texto do input, envia para a API de IA e mostra a resposta.
- */
-async function enviarPerguntaParaIA() {
-    const chatInput = document.getElementById('ai-chat-input');
-    const pergunta = chatInput.value.trim();
-
-    if (!pergunta) return; // Não envia mensagens vazias
-
-    // 1. Mostra a mensagem do utilizador e limpa o input
-    adicionarMensagemAoChat(pergunta, 'user');
-    chatInput.value = '';
-
-    // 2. Mostra o indicador "a digitar..."
-    mostrarIndicadorDigitando(true);
-
-    try {
-        // 3. Envia a pergunta para a nossa API PHP
-        const dispositivoId = currentViewingDeviceId || (allDevices.length > 0 ? allDevices[0].id : null);
-
-        if (!dispositivoId) {
-            mostrarIndicadorDigitando(false);
-            adicionarMensagemAoChat("Por favor, selecione um dispositivo primeiro.", 'bot');
-            return;
-        }
-
-        // Envia a pergunta E o ID do dispositivo para a nossa API PHP
-        const response = await fetch('api/ia/perguntar.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ pergunta: pergunta, dispositivo_id: dispositivoId }) // <-- Adicionado dispositivo_id
-        });
-
-        const resultado = await response.json();
-
-        // 4. Esconde o indicador "a digitar..."
-        mostrarIndicadorDigitando(false);
-
-        // 5. Mostra a resposta do bot
-        if (resultado.status === 'sucesso') {
-            adicionarMensagemAoChat(resultado.dados.texto, 'bot');
-        } else {
-            adicionarMensagemAoChat(`Ocorreu um erro: ${resultado.mensagem}`, 'bot');
-        }
-    } catch (error) {
-        mostrarIndicadorDigitando(false);
-        adicionarMensagemAoChat("Não foi possível comunicar com o assistente. Verifique a sua ligação.", 'bot');
-        console.error("Erro ao chamar a API de IA:", error);
-    }
-}
+}s
